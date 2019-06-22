@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+{% block body %}
+    <a href="{{ path('fos_user_security_logout') }}">logout</a>
+
+    <div id="calendar">
+        {% set PlusMonth = first_day|date_modify("+1 month")|date('U') %}
+        {% set LessMonth = first_day|date_modify("-1 month")|date('U') %}
+        {% set PlusYear = first_day|date_modify("+1 year")|date('U') %}
+        {% set LessYear = first_day|date_modify("-1 year")|date('U') %}
+        <div><a href='{{ path('index') }}' title='test add link'>Aujourd'hui</a></div>
+
+        <center>
+            <table>
+                <tr><a href="{{ path('home',{first_day: LessMonth}) }}" class="room-price"><<</a></tr>
+                <tr>    {{ first_day|date('F') }}</tr>
+                <tr><a href="{{ path('home',{first_day: PlusMonth}) }}" class="room-price">>></a>
+                </tr>
+                <tr>&nbsp;&nbsp;</tr>
+                <tr><a href="{{ path('home',{first_day: LessYear}) }}" class="room-price"><<</a></tr>
+
+                <tr>    {{ first_day|date('Y') }}
+                <tr><a href="{{ path('home',{first_day: PlusYear}) }}" class="room-price">>></a></tr>
+
+                </tr>
+            </table>
+        </center>
+
+
+        <table style="width:100%" border="1">
+            <thead>
+            <center>
+                <h1> {{ first_day|date('F') }}  {{ first_day|date('Y') }}</h1>
+
+                {% set startDow = first_day|date('F 1\\s\\t Y')|date('w')-1 %}
+                {#  month number {{ first_day|date('m')-1 }}#}
+
+            </center>
+            <tr>
+            <tr>
+                <th>LUN.</th>
+                <th>MAR.</th>
+                <th>MER.</th>
+                <th>JEU.</th>
+                <th>VEN.</th>
+                <th>SAM.</th>
+                <th>DIM.</th>
+            </tr>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% set daysInMonth = first_day|date('t') %}
+                {% set startDow = first_day|date('F 1\\s\\t Y')|date('w')-1 %}
+                {% set dow = startDow %}
+                {% for day in range(1,daysInMonth) %}
+                {% if loop.first and startDow != 0 %}
+                    <td colspan="{{ startDow }}"></td>
+                {% endif %}
+                <td>
+                    <div>
+                        <div>
+                            {% if ("now"|date("m")==first_day|date("m")) and ("now"|date("d")==day) and ("now"|date("y")==first_day|date("y")) %}
+                                {% set x =  "%02d"|format(day)  %}
+                                {% set y = first_day|date("m") %}
+                                {% set z =  first_day|date("Y") %}
+                                <a role="button" class="btn popovers" data-toggle="popover" title=""
+                                   data-content="ajouter <a href='{{ path('day',{day:x ,month:y,year:z}) }}' title='test add link'>tache</a><br>voir <a href='{{ path('day',{day:x ,month:y,year:z}) }}' title='test add link'>les taches</a>"
+                                   data-original-title="test title">
+                                    <div style="color: white;padding-top: 3px;" class="dot">{{ day }}</div>
+                                </a>
+
+                            {% else %}
+                                {% set x =  "%02d"|format(day)  %}
+                                {% set y = first_day|date("m") %}
+                                {% set z =  first_day|date("Y") %}
+
+                                <a role="button" class="btn popovers" data-toggle="popover" title=""
+                                   data-content="ajouter <a href='{{ path('day',{day:x ,month:y,year:z}) }}' title='test add link'>tache</a><br> voir <a href='{{ path('day',{day:x ,month:y,year:z}) }}' title='test add link'>les taches</a>"
+                                   data-originasl-title="test title">
+                                    {{ day }}</a>                        {% endif %}
+
+                        </div>
+                        <div>
+                            {{ "now"|date('H:i') }}:meeting
+                        </div>
+                    </div>
+                </td>
+                {% if loop.last and dow != 6 %}
+                    <td colspan="{{ 6 - dow }}">&nbsp;</td>
+                {% endif %}
+                {% if dow == 6 %}
+                {% set dow = 0 %}
+            </tr>
+            <tr>
+                {% else %}
+                    {% set dow = dow + 1 %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
