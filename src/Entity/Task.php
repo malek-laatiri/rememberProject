@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
@@ -187,7 +186,7 @@ class Task
 
     /**
      * @param Remainder $remainder
-     * @return Taskl
+     * @return Task
      */
     public function addRemainder(Remainder $remainder): self
     {
