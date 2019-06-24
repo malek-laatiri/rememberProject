@@ -1,74 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb589da0-0de0-4d79-8bc7-8ffa3b5187bf" name="Default Changelist" comment="second commit">
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a5edccefc1152815b03d39af1590d9e10ec706d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/12346f8cd9616196887b2ffdb011079b75936059" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1b655504ead183385601739844f70861c1535423" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/2/2205ed8ac012ed5af17cf22fbbfc6a3dd1629622" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/23b3b2d1e3d2e5fe98372944e1a8a6e66acf5e1e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/29198098962e7f33c221162e2ae8ae32900e11aa" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2e97bd1cf0db0fe34b8c59a94e6b7a0f68b5e04f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/5/352d2618d5e8a7a9259476214157034e6b67fbb5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/5/35bb2cf8eda5bf4c421c1e7e92c15c64b423733e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/3/43dc2f388a072ee1388ad42012d3bdcbc01c3a41" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/44af60012fa0b5fcca48355e6e545d9df0e1aa20" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5ffff80b6da656e78261bf85eddb09fec0c7a56c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/7/672fb2a4b2660ae0b0ca4dec1310555ca77ef5dd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/c/6c2442a67dda9c3193b965c65ce788acf9b5ecaf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/c/6cd9608de81f6f2d69283584649ac5c461547a3e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/7/87b99206717ccce222f05190f36b6273e3ea6228" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/4/943a623b5e2fd95ea78f6287fc600a6f8e0a5235" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/5/95e8a41d1413bb88b6f381f62de185c923686a5c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9edb3d1e95dfc79e011bc28bcd374833bdbae38a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a461a30596b95033268f2a399e0e84d31bc975e5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5f414281d2fb785d8063c4ed8b8acd3fa00828a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/c/ac90961e8a5b90664f928c4eca85ea720acfcc40" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/c/ace29539ac31910d3ff0e7d11d8e9bd7eff30b24" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/d/ad8b439416d1e02614f47c5b471c7c4e587dca82" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/9/b97af807d7698aba6f6681c02d1e88f98472cfde" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/4/c420553d3c9cc70397cf117e17653e96460fdc52" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/9/c983a434e4a78308bf3f58043e1b5e3960cf6f46" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/a/da91fa2f2cdc1e3525b986b5b3d4d9b9b5dd5b26" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f469f408b5b2af79e0d9df7fa4f2ded0232473f3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/f/ffb3f1cfd73fdec1f0c80c63d0b5bbc1fff22022" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/TaskController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Remainder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Task.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/UserTask.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/RemainderType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20190622210755.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20190622223528.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/RemainderRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/TaskRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/UserTaskRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/tasks.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/task/_delete_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/task/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/task/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/task/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/task/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/task/show.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/_delete_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7e3bf82b-cd4a-41d4-a22a-e41b1af0ddd7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d05542be-314c-4ade-b8fa-8e9da7b8e050.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d05542be-314c-4ade-b8fa-8e9da7b8e050.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fc3ef24c-012f-4b43-a31c-6446d7f52a21.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/TaskType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TaskType.php" afterDir="false" />
-    </list>
+    <list default="true" id="bb589da0-0de0-4d79-8bc7-8ffa3b5187bf" name="Default Changelist" comment="second commit" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +74,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/task/_form.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="57">
@@ -182,6 +115,28 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/task">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="4fd5641c-f501-42dc-8c3c-74ce1efa4d3f">
+              <filtering>
+                <filter text="" />
+              </filtering>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/user_task">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="4fd5641c-f501-42dc-8c3c-74ce1efa4d3f">
+              <filtering>
+                <filter text="" />
+              </filtering>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/user">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state projectRestartId="4fd5641c-f501-42dc-8c3c-74ce1efa4d3f">
               <filtering>
@@ -347,7 +302,7 @@
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="382" />
     <option name="y" value="43" />
     <option name="width" value="1400" />
@@ -474,7 +429,7 @@
       <workItem from="1561290711200" duration="11781000" />
       <workItem from="1561361867662" duration="6677000" />
       <workItem from="1561370077830" duration="13097000" />
-      <workItem from="1561383895347" duration="8171000" />
+      <workItem from="1561383895347" duration="8698000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <created>1561368520240</created>
@@ -487,7 +442,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58825000" />
+    <option name="totallyTimeSpent" value="59352000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -514,7 +469,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.15550636" />
+      <window_info active="true" anchor="right" id="Database" order="3" visible="true" weight="0.15550636" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,13 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/user">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="3f2ab7a5-f396-4084-8b1f-25ba4ca3b80b">
-          <filtering />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -735,15 +683,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/user_task">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="babe3a31-8c89-45d4-98ec-f7840ee1f974">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/UserType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -803,15 +742,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/task">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="4fd5641c-f501-42dc-8c3c-74ce1efa4d3f">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Task.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -850,6 +780,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
           <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="4fd5641c-f501-42dc-8c3c-74ce1efa4d3f">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/task">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="4fd5641c-f501-42dc-8c3c-74ce1efa4d3f">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/user_task">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="4fd5641c-f501-42dc-8c3c-74ce1efa4d3f">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
