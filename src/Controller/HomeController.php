@@ -48,7 +48,9 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         $connecteduser=$this->getUser()->getUsername();
-        dump($connecteduser);
+        $roleuser=$this->getUser()->getRoles();
+
+        dump($roleuser);
         $first_day = time();
         dump($first_day);
 

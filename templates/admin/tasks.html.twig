@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Admin{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
+
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+
+        div.absolute {
+            position: relative;
+            top: 80px;
+            left: 500px;
+
+            width: 610px;
+            border: 3px solid black;
+        }
+
+        div.side {
+            position: relative;
+            top: 80px;
+            left: 150px;
+
+            width: 300px;
+            border: 3px solid black;
+            height: 200px;
+
+        }
+    </style>
+
+    <div class="example-wrapper">
+        <a href="{{ path('fos_user_security_logout') }}">logout</a>
+
+    </div>
+    <div class="side">
+        <table>
+            <tr>
+                <th><a href="{{ path('admin') }}">Users</a></th>
+            </tr>
+            <tr>
+                <th><a href="{{ path('adminTasks') }}">Tasks</a></th>
+            </tr>
+        </table>
+    </div>
+        <div class="absolute">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">title</th>
+                    <th scope="col">description</th>
+                    <th scope="col">date</th>
+                    <th scope="col">start hour</th>
+                    <th scope="col">end hour</th>
+                    <th scope="col">created at</th>
+                    <th scope="col">update</th>
+
+                    <th scope="col">Delete</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <td><a href="{{ path('task_new') }}">new</a></td>
+
+                {% for task in tasks %}
+
+                    <tr>
+                        <th scope="row">{{ task.id }}</th>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.description }}</td>
+                        <td>{{ task.date|date('Y-m-d') }}</td>
+                        <td>{{ task.starthour|date('H:i:s') }}</td>
+                        <td>{{ task.endhour|date('H:i:s') }}</td>
+                        <td>{{ task.createdat|date('Y-m-d') }}</td>
+
+                        <td><a href="{{ path('task_edit', {'id': task.id}) }}">edit</a></td>
+
+                        <td>    {{ include('task/_delete_form.html.twig') }}</td>
+
+                    </tr>
+
+
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

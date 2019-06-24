@@ -1,3 +1,6 @@
+{% extends 'base.html.twig' %}
+    {% block body %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +11,7 @@
     {% block stylesheets %}
 
     {% endblock %}
-    {% block body %}
+
 <body>
 <div>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -33,7 +36,7 @@
     {% endfor %}
 {% endif %}
 
-<div>
+<div class="form-group d-flex p-2">
     {% block fos_user_content %}
     {% endblock fos_user_content %}
 </div>
@@ -42,8 +45,6 @@
 {% block javascripts %}{% endblock %}
 
 
-</body>
-</html>
 
 
 
