@@ -113,7 +113,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/task">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state projectRestartId="4fd5641c-f501-42dc-8c3c-74ce1efa4d3f">
@@ -124,7 +124,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/user_task">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state projectRestartId="4fd5641c-f501-42dc-8c3c-74ce1efa4d3f">
@@ -429,7 +429,7 @@
       <workItem from="1561290711200" duration="11781000" />
       <workItem from="1561361867662" duration="6677000" />
       <workItem from="1561370077830" duration="13097000" />
-      <workItem from="1561383895347" duration="8698000" />
+      <workItem from="1561383895347" duration="8970000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <created>1561368520240</created>
@@ -442,7 +442,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59352000" />
+    <option name="totallyTimeSpent" value="59624000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -735,13 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="39" column="27" selection-start-line="24" selection-end-line="39" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Task.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -749,13 +742,6 @@
           <folding>
             <element signature="e#30#78#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/RemainderType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -792,7 +778,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/task">
+    <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/user_task">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state projectRestartId="4fd5641c-f501-42dc-8c3c-74ce1efa4d3f">
           <filtering>
@@ -801,7 +787,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/user_task">
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="39" column="27" selection-start-line="24" selection-end-line="39" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/RemainderType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://d05542be-314c-4ade-b8fa-8e9da7b8e050/schema/remember/table/task">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state projectRestartId="4fd5641c-f501-42dc-8c3c-74ce1efa4d3f">
           <filtering>
