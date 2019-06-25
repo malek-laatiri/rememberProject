@@ -17,13 +17,13 @@ class UserTask
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="userTasks",cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="userTasks",cascade={"persist","remove"})
      *
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Task", inversedBy="userTasks",cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="Task", inversedBy="userTasks",cascade={"persist","remove"})
      *
      */
     private $task;

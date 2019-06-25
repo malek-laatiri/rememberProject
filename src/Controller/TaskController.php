@@ -84,7 +84,16 @@ class TaskController extends AbstractController
             }
 
 
-            
+
+            foreach ($task->getUserTasks() as $value) {
+                $user = new UserTask();
+                $user->setTask($task);
+                $user->setIsCreator(true);
+
+                $user->setUser($value);
+                $entityManager->persist($user);
+                $entityManager->flush();
+            }
 
 
 
