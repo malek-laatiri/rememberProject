@@ -77,8 +77,8 @@ class TaskController extends AbstractController
                 $remainder = new Remainder();
                 $remainder->setTask($task);
                 $remainder->setRememberDate($value->getRememberDate());
-                $entityManager->flush();
                 $entityManager->persist($remainder);
+                $entityManager->flush();
             }
 
             return $this->redirectToRoute('task_index');
