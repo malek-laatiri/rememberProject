@@ -25,14 +25,18 @@ class TaskType extends AbstractType
             ->add('starthour', TimeType::class)
             ->add('endhour', TimeType::class)
             ->add('endhour', TimeType::class)
-
             ->add('remainders', CollectionType::class, [
                 'entry_type' => RemainderType::class,
                 'prototype' => true,
-                'allow_add'=>true,
+                'allow_add' => true,
 
             ])
-        ;
+            ->add('userTasks', CollectionType::class, [
+                'entry_type' => UserTaskType::class,
+                'prototype' => true,
+                'allow_add' => true,
+
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

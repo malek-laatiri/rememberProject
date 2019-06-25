@@ -20,7 +20,8 @@ class UserTaskType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => UserTask::class,
+            'data_class' => UserTask::class,'allow_add' => true,
+            'multiple'=>true,'prototype' => true,
         ]);
     }
 }

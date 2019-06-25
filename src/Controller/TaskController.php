@@ -50,11 +50,9 @@ class TaskController extends AbstractController
     public function new(Request $request): Response
     {
         $task = new Task();
-        $userTask = new UserTask();
         $form = $this->createForm(TaskType::class, $task);
-        $form2 = $this->createForm(UserTaskType::class, $userTask);
         $form->handleRequest($request);
-        $form2->handleRequest($request);
+        $UserTask = new UserTask();//task creator
 
         $user = $this->getUser();
 
@@ -65,13 +63,17 @@ class TaskController extends AbstractController
             $entityManager->persist($task);
 
 
-            $userTask->setTask($task);
-            $userTask->setIsCreator(true);
-            $userTask->setUser($user);
+            $UserTask->setTask($task);
+            $UserTask->setIsCreator(true);
+            $UserTask->setUser($user);
+            $UserTask->setIsApproved(true);
 
 
             $entityManager->flush();
             $entityManager->persist($task);
+
+            $entityManager->flush();
+            $entityManager->persist($UserTask);
 
             foreach ($task->getRemainders() as $value) {
                 $remainder = new Remainder();
@@ -81,13 +83,18 @@ class TaskController extends AbstractController
                 $entityManager->flush();
             }
 
+
+            
+
+
+
+
             return $this->redirectToRoute('task_index');
         }
 
         return $this->render('task/new.html.twig', [
             'task' => $task,
             'form' => $form->createView(),
-            'form2' => $form2->createView(),
         ]);
     }
 
