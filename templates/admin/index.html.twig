@@ -3,45 +3,14 @@
 {% block title %}Hello Admin{% endblock %}
 
 {% block body %}
-    <style>
-        .example-wrapper {
-            margin: 1em auto;
-            max-width: 800px;
-            width: 95%;
-            font: 18px/1.5 sans-serif;
-        }
+<div class="container">
+    <div class="row">
 
-        .example-wrapper code {
-            background: #F5F5F5;
-            padding: 2px 6px;
-        }
-
-        div.absolute {
-            position: relative;
-            top: 80px;
-            left: 500px;
-
-            width: 610px;
-            border: 3px solid black;
-        }
-
-        div.side {
-            position: relative;
-            top: 80px;
-            left: 150px;
-
-            width: 300px;
-            border: 3px solid black;
-            height: 200px;
-
-        }
-    </style>
-
-    <div class="example-wrapper">
+    <div class="row">
         <a href="{{ path('fos_user_security_logout') }}">logout</a>
 
     </div>
-    <div class="side">
+    <div class="row">
         <table>
             <tr>
                 <th><a href="{{ path('admin') }}">Users</a></th>
@@ -50,9 +19,8 @@
                 <th><a href="{{ path('adminTasks') }}">Tasks</a></th>
             </tr>
         </table>
-
     </div>
-    <div class="absolute">
+    <div class="row">
         <table class="table">
             <thead>
             <tr>
@@ -84,5 +52,8 @@
             </tbody>
         </table>
     </div>
+</div>
+</div>
+
 
 {% endblock %}

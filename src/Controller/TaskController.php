@@ -2,25 +2,26 @@
 
 namespace App\Controller;
 
-use App\Entity\Remainder;
 use App\Entity\Task;
-use App\Entity\UserTask;
-use App\Form\RemainderType;
 use App\Form\TaskType;
+use App\Entity\UserTask;
+use App\Entity\Remainder;
 use App\Form\UserTaskType;
 use App\Repository\TaskRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TimeType;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/task")
+ *
+ * Class TaskController
+ * @package App\Controller
  */
 class TaskController extends AbstractController
 {
@@ -36,56 +37,57 @@ class TaskController extends AbstractController
         $tasks = $taskRepository->findAll();
 
         return $this->render('task/index.html.twig', [
-            'tasks' =>$tasks,
+            'tasks' => $tasks,
         ]);
     }
 
     /**
      * @Route("/new", name="task_new", methods={"GET","POST"})
+     *
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
         $task = new Task();
-        $remainder = new Remainder();
-        $userTask=new UserTask();
+        $userTask = new UserTask();
         $form = $this->createForm(TaskType::class, $task);
-        $form1 = $this->createForm(RemainderType::class, $remainder);
         $form2 = $this->createForm(UserTaskType::class, $userTask);
-
         $form->handleRequest($request);
-        $form1->handleRequest($request);
         $form2->handleRequest($request);
-        dump($this->getUser());
-        dump($task);
-        dump($remainder);
-        dump($userTask);
-        $user=$this->getUser();
+
+        $user = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $entityManager->flush();
             $entityManager->persist($task);
-            $remainder->setTask($task);
-            $entityManager->persist($remainder);
+
+
             $userTask->setTask($task);
             $userTask->setIsCreator(true);
             $userTask->setUser($user);
 
 
-            $entityManager->persist($userTask);
-
             $entityManager->flush();
+            $entityManager->persist($task);
+
+            foreach ($task->getRemainders() as $value) {
+                $remainder = new Remainder();
+                $remainder->setTask($task);
+                $remainder->setRememberDate($value->getRememberDate());
+                $entityManager->flush();
+                $entityManager->persist($remainder);
+            }
 
             return $this->redirectToRoute('task_index');
         }
 
         return $this->render('task/new.html.twig', [
             'task' => $task,
-            'remainder' => $remainder,
             'form' => $form->createView(),
-            'form1' => $form1->createView(),
             'form2' => $form2->createView(),
-
-
         ]);
     }
 

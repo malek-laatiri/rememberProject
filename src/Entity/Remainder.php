@@ -24,7 +24,7 @@ class Remainder
     private $remember_date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Task", inversedBy="remainders")
+     * @ORM\ManyToOne(targetEntity="Task", inversedBy="remainders", cascade={"remove"})
      */
     private $task;
 

@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
  */
+
 class Task
 {
     /**
@@ -50,12 +51,12 @@ class Task
 
 
     /**
-     * @ORM\OneToMany(targetEntity="UserTask", mappedBy="task")
+     * @ORM\OneToMany(targetEntity="UserTask", mappedBy="task", cascade={"persist","remove"})
      */
     private $userTasks;
 
     /**
-     * @ORM\OneToMany(targetEntity="Remainder", mappedBy="task")
+     * @ORM\OneToMany(targetEntity="Remainder", mappedBy="task", cascade={"persist","remove"})
      */
     private $remainders;
 
@@ -219,6 +220,4 @@ class Task
     {
         return $this->title;
     }
-
-
 }
