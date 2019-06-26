@@ -12,3 +12,4 @@ admin:
 adminTasks:
   path: /adminTasks
   controller: App\Controller\AdminController::adminTasks
+

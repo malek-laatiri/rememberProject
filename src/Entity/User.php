@@ -25,7 +25,7 @@ class User extends BaseUser
 
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\UserTask", mappedBy="user", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\UserTask", mappedBy="user", cascade={"persist","remove"})
      */
     private $userTasks;
 

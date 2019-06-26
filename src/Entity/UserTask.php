@@ -17,7 +17,8 @@ class UserTask
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="userTasks",cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="userTasks",cascade={"persist"})
+     *
      */
     private $user;
 

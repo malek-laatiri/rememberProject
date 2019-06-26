@@ -20,33 +20,27 @@
             </tr>
         </table>
     </div>
+
     <div class="row">
         <table class="table">
+
             <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Username</th>
                 <th scope="col">Email</th>
                 <th scope="col">Delete</th>
-
             </tr>
             </thead>
+
             <tbody>
-
-
             {% for user in users %}
-
                 <tr>
                     <th scope="row">{{ user.id }}</th>
                     <td>{{ user.username }}</td>
                     <td>{{ user.email }}</td>
-                    <td>
-                        {{ include('user/_delete_form.html.twig') }}
-                    </td>
-
+                    <td>{{ include('user/_delete_form.html.twig') }}</td>
                 </tr>
-
-
             {% endfor %}
 
             </tbody>

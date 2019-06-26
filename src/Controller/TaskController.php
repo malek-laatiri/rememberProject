@@ -2,16 +2,15 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Task;
 use App\Entity\User;
-use App\Form\RemainderType;
 use App\Form\TaskType;
 use App\Entity\UserTask;
 use App\Entity\Remainder;
 use App\Form\UserTaskType;
+use App\Form\RemainderType;
 use App\Repository\TaskRepository;
-use DateTime;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +18,9 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 
 /**
  * @Route("/task")
@@ -29,9 +30,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class TaskController extends AbstractController
 {
 
+
     /**
      * @Route("/", name="task_index", methods={"GET"})
-     *
      * @param TaskRepository $taskRepository
      * @return Response
      */
@@ -58,6 +59,7 @@ class TaskController extends AbstractController
         $UserTask->setIsCreator($creator);
         $UserTask->setUser($user);
         $UserTask->setIsApproved($approved);
+
         return $UserTask;
 
     }
@@ -75,6 +77,10 @@ class TaskController extends AbstractController
         return $remainder;
     }
 
+    /**
+     * @param string $email
+     * @param UserTask $userTask
+     */
     public function InsertNewUser(string $email, UserTask $userTask)
     {
         $user = new User();
@@ -84,6 +90,10 @@ class TaskController extends AbstractController
         $user->setUsername(trim($email, "@gmail.com"));
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function newTask(Request $request): Response
     {
         $task = new Task();
@@ -104,14 +114,13 @@ class TaskController extends AbstractController
             $entityManager->flush();
 
             foreach ($task->getRemainders() as $value) {
-                $remainder = $this->InsertRemainder($task, $value);
+                $remainder = $this->InsertRemainder($task, $value->getRememberDate());
 
                 $entityManager->persist($remainder);
-                $entityManager->flush();
             }
+            $entityManager->flush();
 
-
-            return $this->redirectToRoute('task_index');
+            return $this->redirectToRoute('adminTasks');
         }
 
         return $this->render('task/new.html.twig', [
@@ -165,7 +174,7 @@ class TaskController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('task_index', [
+            return $this->redirectToRoute('adminTasks', [
                 'id' => $task->getId(),
             ]);
         }
@@ -187,6 +196,6 @@ class TaskController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('task_index');
+        return $this->redirectToRoute('adminTasks');
     }
 }
