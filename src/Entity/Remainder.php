@@ -60,9 +60,13 @@ class Remainder
         $this->remember_date = $remember_date;
     }
 
+    public function __toString()
+    {
+        $date = $this->remember_date;
+        $result = date_format($date,"Y/m/d H:i:s");
+        return $result;
 
-
-
+     }
 
 
 }
