@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Task;
+use App\Form\RemainderType;
 use App\Form\TaskType;
 use App\Entity\UserTask;
 use App\Entity\Remainder;
 use App\Form\UserTaskType;
 use App\Repository\TaskRepository;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +21,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/task")
- *
  * Class TaskController
  * @package App\Controller
  */
@@ -41,13 +42,8 @@ class TaskController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="task_new", methods={"GET","POST"})
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function new(Request $request): Response
+
+    public function newTask(Request $request): Response
     {
         $task = new Task();
         $form = $this->createForm(TaskType::class, $task);
@@ -59,9 +55,6 @@ class TaskController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            $entityManager->flush();
-            $entityManager->persist($task);
-
 
             $UserTask->setTask($task);
             $UserTask->setIsCreator(true);
@@ -69,12 +62,11 @@ class TaskController extends AbstractController
             $UserTask->setIsApproved(true);
 
 
-            $entityManager->flush();
             $entityManager->persist($task);
-
             $entityManager->flush();
-            $entityManager->persist($UserTask);
 
+            $entityManager->persist($UserTask);
+            $entityManager->flush();
             foreach ($task->getRemainders() as $value) {
                 $remainder = new Remainder();
                 $remainder->setTask($task);
@@ -82,20 +74,6 @@ class TaskController extends AbstractController
                 $entityManager->persist($remainder);
                 $entityManager->flush();
             }
-
-
-
-            foreach ($task->getUserTasks() as $value) {
-                $user = new UserTask();
-                $user->setTask($task);
-                $user->setIsCreator(true);
-
-                $user->setUser($value);
-                $entityManager->persist($user);
-                $entityManager->flush();
-            }
-
-
 
 
             return $this->redirectToRoute('task_index');
@@ -133,6 +111,18 @@ class TaskController extends AbstractController
             ])
             ->add('starthour', TimeType::class)
             ->add('endhour', TimeType::class)
+            ->add('remainders', CollectionType::class, [
+                'entry_type' => RemainderType::class,
+                'prototype' => true,
+                'allow_add' => true,
+
+            ])
+            ->add('userTasks', CollectionType::class, [
+                'entry_type' => UserTaskType::class,
+                'prototype' => true,
+                'allow_add' => true,
+
+            ])
             ->add('save', SubmitType::class, ['label' => 'Create Task'])
             ->getForm();
         $form->handleRequest($request);

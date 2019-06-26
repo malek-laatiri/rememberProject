@@ -75,3 +75,15 @@ L
 templates/user/new.html.twig,a/c/ace29539ac31910d3ff0e7d11d8e9bd7eff30b24
 I
 src/Form/UserTaskType.php,c/1/c1d8dc495d508c51bfe267bf1fc93cbb95cd569f
+M
+public/js/jquery-3.4.1.min.js,8/2/821a9c72b8de20747d4fa3f821a0fec1707a763d
+D
+public/css/style.css,1/e/1ef0e38ec90181a17549647e1a67072ac5d804da
+U
+%src/Repository/UserTaskRepository.php,c/a/ca7607a44463d9b65de47934722247f65e62cdb7
+D
+public/js/addTask.js,b/f/bf411ac16221efb25876697a55772d33d48dee3b
+B
+public/js/index.js,a/f/afb58c06e2a554025102c6e1f44913a2e1777003
+D
+public/js/addUser.js,3/9/395fb015a6044fae4f570eac4e9ba8965ad02696

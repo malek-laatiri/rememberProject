@@ -7,28 +7,29 @@ use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class AdminController
+ * @package App\Controller
+ */
 class AdminController extends AbstractController
 {
-    /**
-     * @Route("/admin", name="admin")
-     */
-    public function index(UserRepository $repository )
+
+    public function admin(UserRepository $repository)
     {
-        $users=$repository->findAll();
+        $users = $repository->findAll();
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
-            'users'=>$users
+            'users' => $users
         ]);
     }
-    /**
-     * @Route("/adminTasks", name="adminTasks")
-     */
-    public function Tasks(TaskRepository $repositoryT )
+
+
+    public function adminTasks(TaskRepository $repositoryT)
     {
-        $tasks=$repositoryT->findAll();
+        $tasks = $repositoryT->findAll();
         return $this->render('admin/tasks.html.twig', [
             'controller_name' => 'AdminController',
-            'tasks'=>$tasks
+            'tasks' => $tasks
         ]);
     }
 }
