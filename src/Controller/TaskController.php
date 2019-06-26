@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Task;
+use App\Entity\User;
 use App\Form\RemainderType;
 use App\Form\TaskType;
 use App\Entity\UserTask;
 use App\Entity\Remainder;
 use App\Form\UserTaskType;
 use App\Repository\TaskRepository;
+use DateTime;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,35 +44,68 @@ class TaskController extends AbstractController
         ]);
     }
 
+    /**
+     * @param Task $task
+     * @param User $user
+     * @param bool $creator
+     * @param bool $approved
+     * @return UserTask
+     */
+    public function InsertUserTask(Task $task, User $user, Bool $creator, Bool $approved)
+    {
+        $UserTask = new UserTask();//task creator
+        $UserTask->setTask($task);
+        $UserTask->setIsCreator($creator);
+        $UserTask->setUser($user);
+        $UserTask->setIsApproved($approved);
+        return $UserTask;
+
+    }
+
+    /**
+     * @param Task $task
+     * @param datetime $RememberDate
+     * @return Remainder
+     */
+    public function InsertRemainder(Task $task, datetime $RememberDate)
+    {
+        $remainder = new Remainder();
+        $remainder->setTask($task);
+        $remainder->setRememberDate($RememberDate);
+        return $remainder;
+    }
+
+    public function InsertNewUser(string $email, UserTask $userTask)
+    {
+        $user = new User();
+        $user->setEmail($email);
+        $user->addUserTask($userTask);
+        $user->setPassword(md5($email));
+        $user->setUsername(trim($email, "@gmail.com"));
+    }
 
     public function newTask(Request $request): Response
     {
         $task = new Task();
         $form = $this->createForm(TaskType::class, $task);
         $form->handleRequest($request);
-        $UserTask = new UserTask();//task creator
 
         $user = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
-
-            $UserTask->setTask($task);
-            $UserTask->setIsCreator(true);
-            $UserTask->setUser($user);
-            $UserTask->setIsApproved(true);
-
+            $UserTask = $this->InsertUserTask($task, $user, true, true);
 
             $entityManager->persist($task);
             $entityManager->flush();
 
             $entityManager->persist($UserTask);
             $entityManager->flush();
+
             foreach ($task->getRemainders() as $value) {
-                $remainder = new Remainder();
-                $remainder->setTask($task);
-                $remainder->setRememberDate($value->getRememberDate());
+                $remainder = $this->InsertRemainder($task, $value);
+
                 $entityManager->persist($remainder);
                 $entityManager->flush();
             }
