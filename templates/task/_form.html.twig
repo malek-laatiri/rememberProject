@@ -1,55 +1,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="{{ asset('js/index.js') }}"></script>
 <script src="{{ asset('js/addTask.js') }}"></script>
-<script src="{{ asset('js/addUser.js') }}"></script>
-
+<div class="container">
 {{ form_start(form) }}
+<div class="row">
+    <div class="row"> {{ form_row(form.title) }}</div>
+    <div class="row"> {{ form_row(form.description) }}</div>
+        <div class="row"> {{ form_row(form.date) }}</div>
+            <div class="row"> {{ form_row(form.starthour) }}</div>
+                <div class="row"> {{ form_row(form.endhour) }}</div>
 
-    {{ form_row(form.title) }}
-    {{ form_row(form.description) }}
-    {{ form_row(form.date) }}
-    {{ form_row(form.starthour) }}
-    {{ form_row(form.endhour) }}
 
 
-<ul id="email-fields-list"
-    data-prototype="{{ form_widget(form.remainders.vars.prototype)|e }}"
-    data-widget-tags="{{ '<li></li>'|e }}"
-    data-widget-counter="{{ form.children|length }}">
-    {% for emailField in form.remainders %}
-        <li>
-            {{ form_errors(emailField) }}
-            {{ form_widget(emailField) }}
-        </li>
-    {% endfor %}
-</ul>
-
-<button type="button"
-        class="add-another-collection-widget"
-        data-list-selector="#email-fields-list">Add another date
-</button>
-
-{# add user#}
-<ul id="user-fields-list"
-    data-prototype="{{ form_widget(form.userTasks.vars.prototype)|e }}"
-    data-widget-tags="{{ '<li></li>'|e }}"
-    data-widget-counter="{{ form.children|length }}">
-    {% for emailField in form.remainders %}
-        <li>
-            {{ form_errors(emailField) }}
-            {{ form_widget(emailField) }}
-        </li>
-    {% endfor %}
-</ul>
-
-<button type="button"
-        class="add-another-collection"
-        data-list-selector="#email-fields-list">Add another user
-</button>
 
 <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
-
+</div></div>
 
 
 {% block javascripts %}

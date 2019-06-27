@@ -8,12 +8,11 @@
 
     {{ include('task/_form.html.twig') }}
 
-    <a href="{{ path('task_index') }}">back to list</a>
+    <a href="{{ path('adminTasks') }}">back to list</a>
 {% endblock %}
 {% block javascripts %}
     <script>
         $(document).ready(function () {
-            // you may need to change this code if you are not using Bootstrap Datepicker
             $('.js-datepicker').datepicker({
                 format: 'yyyy-mm-dd'
             });

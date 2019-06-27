@@ -1,15 +1,29 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\HomeController::index
 fos_user:
   resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
 task_new:
     path: /newTask
     controller: App\Controller\TaskController::newTask
+
 admin:
   path: /admin
   controller: App\Controller\AdminController::admin
+
 adminTasks:
   path: /adminTasks
   controller: App\Controller\AdminController::adminTasks
 
+
+task_edit:
+  path: /task/{id}/edit
+  controller: App\Controller\TaskController::edit
+
+task_show:
+  path: /task/show/{id}
+  controller: App\Controller\TaskController::show
+task_delete:
+  path: /task/{id}
+  controller: App\Controller\TaskController::delete

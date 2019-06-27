@@ -3,9 +3,16 @@
 {% block title %}Task{% endblock %}
 
 {% block body %}
-    <h1>Task</h1>
+    <div class="container">
+        <div class="row">
+            <div class="row">
 
-    <table class="table">
+            <h1>Task</h1>
+            </div>
+            <div class="row">
+
+            <table class="table">
+
         <tbody>
             <tr>
                 <th>Id</th>
@@ -25,22 +32,25 @@
             </tr>
             <tr>
                 <th>Starthour</th>
-                <td>{{ task.starthour ? task.starthour|date('H:i:s') : '' }}</td>
+                <td>{{ task.starthour ? task.starthour|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Endhour</th>
-                <td>{{ task.endhour ? task.endhour|date('H:i:s') : '' }}</td>
+                <td>{{ task.endhour ? task.endhour|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Createdat</th>
                 <td>{{ task.createdat ? task.createdat|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
+
         </tbody>
     </table>
-
-    <a href="{{ path('task_index') }}">back to list</a>
+            </div>
+    <a href="{{ path('adminTasks') }}">back to list</a>
 
     <a href="{{ path('task_edit', {'id': task.id}) }}">edit</a>
 
     {{ include('task/_delete_form.html.twig') }}
+    </div>
+    </div>
 {% endblock %}

@@ -1,5 +1,3 @@
-
-
 jQuery(document).ready(function () {
     jQuery('.add-another-collection').click(function (e) {
         var list = $("#user-fields-list");

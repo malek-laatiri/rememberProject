@@ -13,15 +13,18 @@ class UserTaskType extends AbstractType
     {
         $builder
             ->add('is_approved')
-            ->add('user')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => UserTask::class,'allow_add' => true,
-            'multiple'=>true,'prototype' => true,
+            'data_class' => UserTask::class,
+            'allow_add' => true,
+            'multiple'=>true,'
+            prototype' => true,
+            'prototype_data' => 'New Tag Placeholder',
+
         ]);
     }
 }

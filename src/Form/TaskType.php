@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Task;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
@@ -22,21 +23,9 @@ class TaskType extends AbstractType
                 'widget' => 'single_text',
                 'attr' => ['class' => 'js-datepicker'],
             ])
-            ->add('starthour', TimeType::class)
-            ->add('endhour', TimeType::class)
-            ->add('endhour', TimeType::class)
-            ->add('remainders', CollectionType::class, [
-                'entry_type' => RemainderType::class,
-                'prototype' => true,
-                'allow_add' => true,
-
-            ])
-            ->add('userTasks', CollectionType::class, [
-                'entry_type' => UserTaskType::class,
-                'prototype' => true,
-                'allow_add' => true,
-
-            ]);
+            ->add('starthour', DateTimeType::class)
+            ->add('endhour', DateTimeType::class)
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
