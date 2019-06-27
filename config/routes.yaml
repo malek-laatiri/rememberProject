@@ -1,6 +1,4 @@
-index:
-    path: /
-    controller: App\Controller\HomeController::index
+
 fos_user:
   resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
@@ -9,7 +7,7 @@ task_new:
     controller: App\Controller\TaskController::newTask
 
 admin:
-  path: /admin
+  path: /
   controller: App\Controller\AdminController::admin
 
 adminTasks:
