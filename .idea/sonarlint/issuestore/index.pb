@@ -87,3 +87,9 @@ B
 public/js/index.js,a/f/afb58c06e2a554025102c6e1f44913a2e1777003
 D
 public/js/addUser.js,3/9/395fb015a6044fae4f570eac4e9ba8965ad02696
+V
+&public/bootstrap/css/bootstrap.min.css,4/5/4534370c34ed36115ed261da5ce3e5770d4a1421
+Y
+)public/bootstrap/css/bootstrap-reboot.css,5/7/5718c4f25269f095183324ea7708837746c1588d
+N
+templates/task/index.html.twig,2/1/2103868b4f213bb392c750d6b952fac6a33d41b7

@@ -34,7 +34,6 @@
                     <th scope="col">start hour</th>
                     <th scope="col">end hour</th>
                     <th scope="col">created at</th>
-                    <th scope="col">remainder date(s)</th>
                     <th scope="col">update</th>
                     <th scope="col">Delete</th>
 
@@ -48,20 +47,18 @@
 
                     <tr>
                         <th scope="row">{{ task.id }}</th>
-                        <td>{{ task.title }}</td>
+                        <td> <a href="{{ path('task_show', {'id': task.id}) }}">{{ task.title }}</a></td>
                         <td>{{ task.description }}</td>
                         <td>{{ task.date|date('Y-m-d') }}</td>
                         <td>{{ task.starthour|date('H:i:s') }}</td>
                         <td>{{ task.endhour|date('H:i:s') }}</td>
                         <td>{{ task.createdat|date('Y-m-d') }}</td>
-                        <td>{% for comment in task.remainders %}
-                                <p>{{ comment }}</p>
-                            {% endfor %}
-                        </td>
 
-                        <td><a href="{{ path('task_edit', {'id': task.id}) }}">edit</a></td>
 
-                        <td>{{ include('task/_delete_form.html.twig') }}</td>
+                        <td><button type="button" class="btn " > <a href="{{ path('task_edit', {'id': task.id}) }}">edit</a></button>
+                           </td>
+
+                        <td id="l">{{ include('task/_delete_form.html.twig') }}</td>
 
                     </tr>
 

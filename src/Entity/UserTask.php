@@ -17,13 +17,13 @@ class UserTask
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="userTasks",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="userTasks")
      *
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Task", inversedBy="userTasks",cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="Task", inversedBy="userTasks",cascade={"remove"})
      *
      */
     private $task;
@@ -91,5 +91,12 @@ class UserTask
 
         return $this;
     }
+
+    public function __construct()
+    {
+        $this->setIsCreator(true);
+
+    }
+
 
 }

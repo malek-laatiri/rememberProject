@@ -43,9 +43,7 @@ class HomeController extends AbstractController
     }
 
 
-    /**
-     * @Route("/", name="index")
-     */
+
     public function index(): Response
     {
         $connecteduser=$this->getUser()->getUsername();

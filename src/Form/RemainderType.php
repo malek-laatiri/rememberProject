@@ -18,6 +18,7 @@ class RemainderType extends AbstractType
     {
         $builder
             ->add('remember_date');
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
