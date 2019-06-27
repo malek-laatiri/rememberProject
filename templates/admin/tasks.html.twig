@@ -50,7 +50,7 @@
 
                     <tr>
                         <th scope="row">{{ task.id }}</th>
-                        <td><a href="{{ path('task_show', {'id': task.id}) }}">{{ task.title }}</a></td>
+                        <td>{{ task.title }}</td>
                         <td>{{ task.description }}</td>
                         <td>{{ task.date|date('Y-m-d') }}</td>
                         <td>{{ task.starthour|date('H:i:s') }}</td>
@@ -76,7 +76,8 @@
 
                 </tbody>
             </table>
+
         </div>
     </div>
-
+</div>
     {% endblock %}
