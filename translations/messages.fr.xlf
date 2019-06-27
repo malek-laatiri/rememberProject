@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="qvIyBkY" resname="title">
+        <source>title</source>
+        <target>__title</target>
+      </trans-unit>
+      <trans-unit id="yQRveje" resname="description">
+        <source>description</source>
+        <target>__description</target>
+      </trans-unit>
+      <trans-unit id="DodjLNR" resname="date">
+        <source>date</source>
+        <target>__date</target>
+      </trans-unit>
+      <trans-unit id="FZikvcI" resname="start hour">
+        <source>start hour</source>
+        <target>__start hour</target>
+      </trans-unit>
+      <trans-unit id="vX1eJNr" resname="end hour">
+        <source>end hour</source>
+        <target>__end hour</target>
+      </trans-unit>
+      <trans-unit id="ko0vg2p" resname="created at">
+        <source>created at</source>
+        <target>__created at</target>
+      </trans-unit>
+      <trans-unit id="vZOMaI9" resname="action">
+        <source>action</source>
+        <target>__action</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

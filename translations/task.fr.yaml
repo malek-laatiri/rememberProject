@@ -1,0 +1,15 @@
+title: titre
+description: description
+date: date
+start hour: debut
+end hour: fin
+created at: creation
+action: action
+show: visiter
+edit: modifier
+delete: supprimer
+new: creer
+users: utilisateurs
+tasks: taches
+logout: deconnecter
+Username: utilisateur

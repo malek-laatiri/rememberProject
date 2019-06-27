@@ -51,12 +51,12 @@
                 <th>
                     <button type="button" class="btn "><a href="{{ path('adminTasks') }}">back to list</a></button>
                 </th>
-
+                &nbsp
                 <th>
                     <button type="button" class="btn "><a href="{{ path('task_edit', {'id': task.id}) }}">edit</a></button>
                 </th>
 
-
+                &nbsp
                 <th id="l">{{ include('task/_delete_form.html.twig') }}</th>
                 </td>
 

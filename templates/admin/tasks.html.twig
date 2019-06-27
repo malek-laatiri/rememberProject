@@ -9,7 +9,7 @@
     <div class="row">
 
         <div class="row">
-            <a href="{{ path('fos_user_security_logout') }}">logout</a>
+            <button class="btn" id="logout"><a href="{{ path('fos_user_security_logout') }}">logout</a></button>
         </div>
         <div class="row">
             <table>
@@ -21,6 +21,7 @@
                 </tr>
 
             </table>
+            <button type="button" class="btn " id="logout" ><a href="{{ path('task_new') }}">new</a></button>
         </div>
 
         <div class="row">
@@ -28,15 +29,15 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">title</th>
-                    <th scope="col">description</th>
-                    <th scope="col">date</th>
-                    <th scope="col">start hour</th>
-                    <th scope="col">end hour</th>
-                    <th scope="col">created at</th>
+                    <th scope="col">{% trans %}title{% endtrans %}</th>
+                    <th scope="col">{% trans %}description{% endtrans %}</th>
+                    <th scope="col">{% trans %}date{% endtrans %}</th>
+                    <th scope="col">{% trans %}start hour{% endtrans %}</th>
+                    <th scope="col">{% trans %}end hour{% endtrans %}</th>
+                    <th scope="col">{% trans %}created at{% endtrans %}</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
-                    <th scope="col">action</th>
+                    <th scope="col">{% trans %}action{% endtrans %}</th>
 
                     <th scope="col"></th>
 
@@ -44,7 +45,6 @@
                 </thead>
                 <tbody>
 
-                <td> <button type="button" class="btn "><a href="{{ path('task_new') }}">new</a></button></td>
 
                 {% for task in tasks %}
 
