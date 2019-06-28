@@ -9,19 +9,19 @@
     <div class="row">
 
         <div class="row">
-            <button class="btn" id="logout"><a href="{{ path('fos_user_security_logout') }}">logout</a></button>
+            <button class="btn" id="logout"><a href="{{ path('fos_user_security_logout') }}">{% trans %}logout{% endtrans %}</a></button>
         </div>
         <div class="row">
             <table>
                 <tr>
-                    <th><a href="{{ path('admin') }}">Users</a>
+                    <th><a href="{{ path('admin') }}">{% trans %}users{% endtrans %}</a>
                         &nbsp
-                        <a href="{{ path('adminTasks') }}">Tasks</a></th>
+                        <a href="{{ path('adminTasks') }}">{% trans %}tasks{% endtrans %}</a></th>
 
                 </tr>
 
             </table>
-            <button type="button" class="btn " id="logout" ><a href="{{ path('task_new') }}">new</a></button>
+            <button type="button" class="btn " id="logout" ><a href="{{ path('task_new') }}">{% trans %}new{% endtrans %}</a></button>
         </div>
 
         <div class="row">
@@ -37,7 +37,7 @@
                     <th scope="col">{% trans %}created at{% endtrans %}</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
-                    <th scope="col">{% trans %}action{% endtrans %}</th>
+                    <th scope="col">action</th>
 
                     <th scope="col"></th>
 
@@ -59,11 +59,11 @@
                         <td>
                         <th>
                             <button type="button" class="btn "><a
-                                        href="{{ path('task_show', {'id': task.id}) }}">show</a></button>
+                                        href="{{ path('task_show', {'id': task.id}) }}">{% trans %}show{% endtrans %}</a></button>
                         </th>
                         <th>
                             <button type="button" class="btn "><a
-                                        href="{{ path('task_edit', {'id': task.id}) }}">edit</a></button>
+                                        href="{{ path('task_edit', {'id': task.id}) }}">{% trans %}edit{% endtrans %}</a></button>
                         </th>
 
                         <th id="l">{{ include('task/_delete_form.html.twig') }}</th>

@@ -1,0 +1,19 @@
+title: titre
+description: description
+date: date
+start hour: debut
+end hour: fin
+created at: date de creation
+action:
+  action: action
+  show: voir
+  edit: modifier
+  delete: supprimer
+  new: creer
+  logout: deconnecter
+  Create new Task: ajouter une nouvelle tache
+  users: utilisateurs
+  tasks: taches
+  task: tache
+  Username: utilisateur
+  back to list: retour a la liste

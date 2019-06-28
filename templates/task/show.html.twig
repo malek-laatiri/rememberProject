@@ -19,27 +19,27 @@
                         <td>{{ task.id }}</td>
                     </tr>
                     <tr>
-                        <th>Title</th>
+                        <th>{% trans %}title{% endtrans %}</th>
                         <td>{{ task.title }}</td>
                     </tr>
                     <tr>
-                        <th>Description</th>
+                        <th>{% trans %}description{% endtrans %}</th>
                         <td>{{ task.description }}</td>
                     </tr>
                     <tr>
-                        <th>Date</th>
+                        <th>{% trans %}date{% endtrans %}</th>
                         <td>{{ task.date ? task.date|date('Y-m-d') : '' }}</td>
                     </tr>
                     <tr>
-                        <th>Starthour</th>
+                        <th>{% trans %}start hour{% endtrans %}</th>
                         <td>{{ task.starthour ? task.starthour|date('Y-m-d H:i:s') : '' }}</td>
                     </tr>
                     <tr>
-                        <th>Endhour</th>
+                        <th>{% trans %}end hour{% endtrans %}</th>
                         <td>{{ task.endhour ? task.endhour|date('Y-m-d H:i:s') : '' }}</td>
                     </tr>
                     <tr>
-                        <th>Createdat</th>
+                        <th>{% trans %}created at{% endtrans %}</th>
                         <td>{{ task.createdat ? task.createdat|date('Y-m-d H:i:s') : '' }}</td>
                     </tr>
 
@@ -49,11 +49,11 @@
             <table>
 
                 <th>
-                    <button type="button" class="btn "><a href="{{ path('adminTasks') }}">back to list</a></button>
+                    <button type="button" class="btn "><a href="{{ path('adminTasks') }}">{% trans %}back to list{% endtrans %}</a></button>
                 </th>
                 &nbsp
                 <th>
-                    <button type="button" class="btn "><a href="{{ path('task_edit', {'id': task.id}) }}">edit</a></button>
+                    <button type="button" class="btn "><a href="{{ path('task_edit', {'id': task.id}) }}">{% trans %}edit{% endtrans %}</a></button>
                 </th>
 
                 &nbsp

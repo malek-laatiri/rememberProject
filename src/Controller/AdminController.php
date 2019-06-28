@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\TaskRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -14,15 +15,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class AdminController extends AbstractController
 {
 
-    public function admin(UserRepository $repository,TranslatorInterface $translator)
+    public function admin(UserRepository $repository,TranslatorInterface $translator,Request $request)
     {
-        $translated = $translator->trans('title');
-        $translated = $translator->trans('description');
-        $translated = $translator->trans('date');
-        $translated = $translator->trans('start hour');
-        $translated = $translator->trans('end hour');
-        $translated = $translator->trans('created');
-        $translated = $translator->trans('action');
 
 
         $users = $repository->findAll();

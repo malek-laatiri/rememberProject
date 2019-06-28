@@ -4,11 +4,11 @@
 {% block title %}New Task{% endblock %}
 
 {% block body %}
-    <h1>Create new Task</h1>
+    <h1>{% trans %}Create new Task{% endtrans %}</h1>
 
     {{ include('task/_form.html.twig') }}
 
-    <a href="{{ path('adminTasks') }}">back to list</a>
+    <a href="{{ path('adminTasks') }}">{% trans %}back to list{% endtrans %}</a>
 {% endblock %}
 {% block javascripts %}
     <script>
