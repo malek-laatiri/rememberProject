@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controller;
+namespace App\Backoffice\Controller;
 
-use App\Repository\TaskRepository;
-use App\Repository\UserRepository;
+use App\Backoffice\Repository\TaskRepository;
+use App\Backoffice\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\Translation\TranslatorInterface;

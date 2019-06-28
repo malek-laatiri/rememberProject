@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace App\Backoffice\Repository;
 
-use App\Entity\Task;
+use App\common\Entity\Task;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

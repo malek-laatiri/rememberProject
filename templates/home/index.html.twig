@@ -9,10 +9,8 @@
         {% set LessMonth = first_day|date_modify("-1 month")|date('U') %}
         {% set PlusYear = first_day|date_modify("+1 year")|date('U') %}
         {% set LessYear = first_day|date_modify("-1 year")|date('U') %}
-        <div><a href='{{ path('index') }}' title='test add link'>Aujourd'hui</a></div>
-        {% if is_granted("ROLE_ADMIN") %}
-            <a href='{{ path('admin') }}' title='test add link'>BackOffice</a>
-        {% endif %}
+        <div><a href='{{ path('day') }}' title='test add link'>Aujourd'hui</a></div>
+
 
         <center>
             <table>

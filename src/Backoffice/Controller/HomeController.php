@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Backoffice\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -43,7 +43,9 @@ class HomeController extends AbstractController
     }
 
 
-
+    /**
+     * @Route("/", name="day")
+     */
     public function index(): Response
     {
         $connecteduser=$this->getUser()->getUsername();

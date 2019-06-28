@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace App\Backoffice\Repository;
 
-use App\Entity\Remainder;
+use App\common\Entity\Remainder;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Form;
+namespace App\Backoffice\Form;
 
-use App\Entity\UserTask;
+use App\common\Entity\UserTask;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;

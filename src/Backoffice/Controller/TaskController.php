@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Controller;
+namespace App\Backoffice\Controller;
 
-use App\Entity\Task;
-use App\Entity\User;
-use App\Form\TaskType;
-use App\Entity\UserTask;
+use App\common\Entity\Task;
+use App\common\Entity\User;
+use App\Backoffice\Form\TaskType;
+use App\common\Entity\UserTask;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

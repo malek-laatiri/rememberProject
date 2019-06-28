@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Entity;
+namespace App\common\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
-
-
 
 /**
  * @ORM\Entity
@@ -25,7 +23,7 @@ class User extends BaseUser
 
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\UserTask", mappedBy="user", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="App\common\Entity\UserTask", mappedBy="user", cascade={"persist","remove"})
      */
     private $userTasks;
 

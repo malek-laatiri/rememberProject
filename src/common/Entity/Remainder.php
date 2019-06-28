@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Entity;
+namespace App\common\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Remainder
- * @package App\Entity
- * @ORM\Entity(repositoryClass="App\Repository\RemainderRepository")
+ * @ORM\Entity(repositoryClass="App\Backoffice\Repository\RemainderRepository")
  */
 class Remainder
 {

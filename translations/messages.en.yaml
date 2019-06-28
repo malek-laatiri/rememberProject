@@ -1,0 +1,20 @@
+task_labels:
+  title: title
+  description: description
+  date: date
+  start hour: start hour
+  end hour: end hour
+  created at: created at
+  users: users
+  tasks: tasks
+  task: task
+  Username: Username
+action:
+  action: action
+  show: show
+  edit: edit
+  delete: delete
+  new: new
+  logout: logout
+  Create new Task: Create new Task
+  back to list: back to list

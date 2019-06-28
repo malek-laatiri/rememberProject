@@ -4,24 +4,24 @@ fos_user:
 
 task_new:
     path: /newTask
-    controller: App\Controller\TaskController::newTask
+    controller: App\Backoffice\Controller\TaskController::newTask
 
 admin:
-  path: /
-  controller: App\Controller\AdminController::admin
+  path: /admin
+  controller: App\Backoffice\Controller\AdminController::admin
 
 adminTasks:
   path: /adminTasks
-  controller: App\Controller\AdminController::adminTasks
+  controller: App\Backoffice\Controller\AdminController::adminTasks
 
 
 task_edit:
   path: /task/{id}/edit
-  controller: App\Controller\TaskController::edit
+  controller: App\Backoffice\Controller\TaskController::edit
 
 task_show:
   path: /task/show/{id}
-  controller: App\Controller\TaskController::show
+  controller: App\Backoffice\Controller\TaskController::show
 task_delete:
   path: /task/{id}
-  controller: App\Controller\TaskController::delete
+  controller: App\Backoffice\Controller\TaskController::delete

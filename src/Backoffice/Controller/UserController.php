@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controller;
+namespace App\Backoffice\Controller;
 
-use App\Entity\User;
-use App\Form\UserType;
+use App\common\Entity\User;
+use App\Backoffice\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,7 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 /**
- * @Route("/user")
+ * Class UserController
+ * @package App\Backoffice\Controller
  */
 class UserController extends AbstractController
 {
