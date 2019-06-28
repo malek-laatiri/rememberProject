@@ -6,6 +6,7 @@ use App\common\Entity\Task;
 use App\common\Entity\User;
 use App\front\Form\TaskType;
 use App\common\Entity\UserTask;
+use App\front\Form\UserTaskType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -41,10 +42,18 @@ class TaskController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $userTask = $this->InsertUserTask($task, $user, false);
-            dd($task);
+            $userTask->setIsApproved(true);
+            foreach ($userTask->getUser() as $value)
+            {
+                $newUser=$this->InsertUserTask($task,$value,false);
+                $entityManager->persist($newUser);
+
+
+            }
             $entityManager->persist($userTask);
 
             $entityManager->persist($task);
+
             $entityManager->flush();
             return $this->redirectToRoute('user_index');
         }
