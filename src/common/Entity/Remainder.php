@@ -5,7 +5,7 @@ namespace App\common\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Backoffice\Repository\RemainderRepository")
+ * @ORM\Entity
  */
 class Remainder
 {

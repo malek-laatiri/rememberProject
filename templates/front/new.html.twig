@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}New Task{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}Create new Task{% endtrans %}</h1>
+
+    {{ include('front/_form.html.twig') }}
+
+    <a href="{{ path('adminTasks') }}">{% trans %}back to list{% endtrans %}</a>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $('.js-datepicker').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+        });
+    </script>
+{% endblock %}

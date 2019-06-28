@@ -14,7 +14,6 @@ adminTasks:
   path: /adminTasks
   controller: App\Backoffice\Controller\AdminController::adminTasks
 
-
 task_edit:
   path: /task/{id}/edit
   controller: App\Backoffice\Controller\TaskController::edit
@@ -22,6 +21,23 @@ task_edit:
 task_show:
   path: /task/show/{id}
   controller: App\Backoffice\Controller\TaskController::show
+
 task_delete:
   path: /task/{id}
   controller: App\Backoffice\Controller\TaskController::delete
+
+user_index:
+  path: /
+  controller: App\front\Controller\HomeController::index
+
+selected_day:
+  path: /day/{day}/{month}/{year}
+  controller: App\front\Controller\HomeController::day
+
+scroll_calendar:
+  path: /home/{first_day}
+  controller: App\front\Controller\HomeController::home
+
+taskfront_new:
+  path: /newFrontTask
+  controller: App\front\Controller\TaskController::newTaskFront

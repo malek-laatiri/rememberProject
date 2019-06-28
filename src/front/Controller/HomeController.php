@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Backoffice\Controller;
+namespace App\front\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,9 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
-    /**
-     * @Route("/home/{first_day}", name="home")
-     */
+
     public function home($first_day): Response
     {
 
@@ -26,9 +24,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/day/{day}/{month}/{year}", name="day")
-     */
+
     public function day($day, $month, $year): Response
     {
 
@@ -43,9 +39,6 @@ class HomeController extends AbstractController
     }
 
 
-    /**
-     * @Route("/", name="day")
-     */
     public function index(): Response
     {
         $connecteduser=$this->getUser()->getUsername();

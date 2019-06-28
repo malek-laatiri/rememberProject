@@ -1,5 +1,6 @@
-{% extends 'base.html.twig' %}
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 {% block title %}Hello HomeController!{% endblock %}
 {% block body %}
     <a href="{{ path('fos_user_security_logout') }}">logout</a>
@@ -9,20 +10,21 @@
         {% set LessMonth = first_day|date_modify("-1 month")|date('U') %}
         {% set PlusYear = first_day|date_modify("+1 year")|date('U') %}
         {% set LessYear = first_day|date_modify("-1 year")|date('U') %}
-        <div><a href='{{ path('day') }}' title='test add link'>Aujourd'hui</a></div>
+        <div><a href='{{ path('user_index') }}' title='test add link'>Aujourd'hui</a></div>
+        <div><a href='{{ path('taskfront_new') }}' title='test add link'>add</a></div>
 
 
         <center>
             <table>
-                <tr><a href="{{ path('home',{first_day: LessMonth}) }}" class="room-price"><<</a></tr>
+                <tr><a href="{{ path('scroll_calendar',{first_day: LessMonth}) }}" class="room-price"><<</a></tr>
                 <tr>    {{ first_day|date('F') }}</tr>
-                <tr><a href="{{ path('home',{first_day: PlusMonth}) }}" class="room-price">>></a>
+                <tr><a href="{{ path('scroll_calendar',{first_day: PlusMonth}) }}" class="room-price">>></a>
                 </tr>
                 <tr>&nbsp;&nbsp;</tr>
-                <tr><a href="{{ path('home',{first_day: LessYear}) }}" class="room-price"><<</a></tr>
+                <tr><a href="{{ path('scroll_calendar',{first_day: LessYear}) }}" class="room-price"><<</a></tr>
 
                 <tr>    {{ first_day|date('Y') }}
-                <tr><a href="{{ path('home',{first_day: PlusYear}) }}" class="room-price">>></a></tr>
+                <tr><a href="{{ path('scroll_calendar',{first_day: PlusYear}) }}" class="room-price">>></a></tr>
 
                 </tr>
             </table>
@@ -67,7 +69,7 @@
                                 {% set y = first_day|date("m") %}
                                 {% set z =  first_day|date("Y") %}
                                 <a role="button" class="btn popovers" data-toggle="popover" title=""
-                                   data-content="ajouter <a href='{{ path('day',{day:x ,month:y,year:z}) }}' title='test add link'>tache</a><br>voir <a href='{{ path('day',{day:x ,month:y,year:z}) }}' title='test add link'>les taches</a>"
+                                   data-content="ajouter <a href='{{ path('selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>tache</a><br>voir <a href='{{ path('selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>les taches</a>"
                                    data-original-title="test title">
                                     <div style="color: white;padding-top: 3px;" class="dot">{{ day }}</div>
                                 </a>
@@ -78,7 +80,7 @@
                                 {% set z =  first_day|date("Y") %}
 
                                 <a role="button" class="btn popovers" data-toggle="popover" title=""
-                                   data-content="ajouter <a href='{{ path('day',{day:x ,month:y,year:z}) }}' title='test add link'>tache</a><br> voir <a href='{{ path('day',{day:x ,month:y,year:z}) }}' title='test add link'>les taches</a>"
+                                   data-content="ajouter <a href='{{ path('selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>tache</a><br> voir <a href='{{ path('selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>les taches</a>"
                                    data-originasl-title="test title">
                                     {{ day }}</a>                        {% endif %}
 
@@ -103,4 +105,11 @@
             </tbody>
         </table>
     </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover({html: true});
+        });
+    </script>
 {% endblock %}
