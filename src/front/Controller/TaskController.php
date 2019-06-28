@@ -64,6 +64,55 @@ class TaskController extends AbstractController
         ]);
     }
 
+
+
+
+
+    public function day($day, $month, $year,Request $request): Response
+    {
+        $time = strtotime($month.'/'.$day.'/'.$year);
+
+        $newformat = date('m/d/Y',$time);
+
+
+        $task = new Task();
+        $user = $this->getUser();
+        $form = $this->createForm(TaskType::class, $task);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $userTask = $this->InsertUserTask($task, $user, false);
+            $userTask->setIsApproved(true);
+            foreach ($userTask->getUser() as $value)
+            {
+                $newUser=$this->InsertUserTask($task,$value,false);
+                $entityManager->persist($newUser);
+
+
+            }
+            $entityManager->persist($userTask);
+
+            $entityManager->persist($task);
+
+            $entityManager->flush();
+            return $this->redirectToRoute('user_index');
+        }
+        return $this->render('home/day.html.twig', [
+
+            'day' => $day,
+            'month' => $month,
+            'year' => $year,
+            'task' => $task,
+            'form' => $form->createView()
+
+
+        ]);
+    }
+
+
+
+
+
     /**
      * @param Task $task
      * @return Response

@@ -2,6 +2,9 @@
 
 namespace App\front\Controller;
 
+use App\common\Entity\Task;
+use App\front\Form\TaskType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,18 +28,6 @@ class HomeController extends AbstractController
     }
 
 
-    public function day($day, $month, $year): Response
-    {
-
-        return $this->render('home/day.html.twig', [
-
-            'day' => $day,
-            'month' => $month,
-            'year' => $year
-
-
-        ]);
-    }
 
 
     public function index(): Response

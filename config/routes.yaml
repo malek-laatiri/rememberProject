@@ -32,7 +32,7 @@ user_index:
 
 selected_day:
   path: /day/{day}/{month}/{year}
-  controller: App\front\Controller\HomeController::day
+  controller: App\front\Controller\TaskController::day
 
 scroll_calendar:
   path: /home/{first_day}
