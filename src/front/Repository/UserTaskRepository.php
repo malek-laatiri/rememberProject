@@ -19,6 +19,23 @@ class UserTaskRepository extends ServiceEntityRepository
         parent::__construct($registry, UserTask::class);
     }
 
+    /**
+     * @param int $id
+     * @return array
+     */
+    public function findvisibleQueryPrime(int $id):array
+    {
+        $query=$this->createQueryBuilder('p')
+            ->Where('p.user = :id ')
+            ->setParameter('id',$id)
+            ->join('p.task','userTasks')
+            ->getQuery()
+            ->getResult();
+
+
+        return $query;
+
+    }
     // /**
     //  * @return UserTask[] Returns an array of UserTask objects
     //  */

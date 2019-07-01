@@ -81,7 +81,7 @@ class TaskController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $userTask = $this->InsertUserTask($task, $user, false);
+            $userTask = $this->InsertUserTask($task, $user, true);
             $userTask->setIsApproved(true);
             foreach ($userTask->getUser() as $value)
             {
