@@ -14,8 +14,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class AdminController extends AbstractController
 {
-
-    public function admin(UserRepository $repository,TranslatorInterface $translator,Request $request)
+    /**
+     * @param UserRepository $repository
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function admin(UserRepository $repository)
     {
 
 
@@ -26,7 +29,11 @@ class AdminController extends AbstractController
         ]);
     }
 
-
+    /**
+     * @param TaskRepository $repositoryT
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     */
     public function adminTasks(TaskRepository $repositoryT)
     {
         $tasks = $repositoryT->findAll();

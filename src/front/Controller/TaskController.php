@@ -2,12 +2,11 @@
 
 namespace App\front\Controller;
 
+use App\Backoffice\Repository\TaskRepository;
 use App\common\Entity\Task;
-use App\common\Entity\User;
 use App\front\Form\TaskType;
-use App\common\Entity\UserTask;
-use App\front\Repository\TaskRepository;
 use App\front\Repository\UserTaskRepository;
+use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,39 +19,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class TaskController extends AbstractController
 {
 
-    public function InsertUserTask(Task $task, User $user, Bool $creator)
-    {
-        $UserTask = new UserTask();//task creator
-        $UserTask->setTask($task);
-        $UserTask->setIsCreator($creator);
-        $UserTask->setUser($user);
-        return $UserTask;
-    }
-
-
     /**
      * @param Request $request
      * @return Response
      */
-    public function newTaskFront(Request $request): Response
+    public function newTaskFront(Request $request, TaskRepository $taskRepository): Response
     {
         $task = new Task();
         $user = $this->getUser();
         $form = $this->createForm(TaskType::class, $task);
+
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $userTask = $this->InsertUserTask($task, $user, true);
-            $userTask->setIsApproved(true);
-            foreach ($userTask->getUser() as $value) {
-                $newUser = $this->InsertUserTask($task, $value, false);
-                $newUser->setIsCreator(false);
-                $entityManager->persist($newUser);
-            }
-            $entityManager->persist($userTask);
-
             $entityManager->persist($task);
-
             $entityManager->flush();
             return $this->redirectToRoute('user_index');
         }
@@ -70,31 +50,23 @@ class TaskController extends AbstractController
      * @param $year
      * @param Request $request
      * @return Response
+     * @throws \Exception
      */
 
     public function NewTaskByDay($day, $month, $year, Request $request): Response
     {
         $time = strtotime($month . '/' . $day . '/' . $year);
 
+        $dateTime = new DateTime($year.'-'.$month.'-'.$day);
 
         $task = new Task();
+        $task->setStarthour($dateTime);
         $user = $this->getUser();
         $form = $this->createForm(TaskType::class, $task);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $userTask = $this->InsertUserTask($task, $user, true);
-            $userTask->setIsApproved(true);
-            foreach ($userTask->getUser() as $value) {
-                $newUser = $this->InsertUserTask($task, $value, false);
-                $entityManager->persist($newUser);
-
-
-            }
-            $entityManager->persist($userTask);
-
             $entityManager->persist($task);
-
             $entityManager->flush();
             return $this->redirectToRoute('user_index');
         }
@@ -106,32 +78,6 @@ class TaskController extends AbstractController
             'task' => $task,
             'form' => $form->createView()
 
-
-        ]);
-    }
-
-
-    /**
-     * @param $day
-     * @param $month
-     * @param $year
-     * @param Request $request
-     * @return Response
-     */
-
-    public function AllTasksByDay($day, $month, $year, Request $request, TaskRepository $repository): Response
-    {
-        $connecteduser = $this->getUser();
-
-        $time = strtotime($month . '/' . $day . '/' . $year);
-        $newformat = date('m/d/Y ', $time);
-
-        return $this->render('front/allTasks.html.twig', [
-
-            'day' => $day,
-            'month' => $month,
-            'year' => $year,
-            'rep' =>$repository->findAll()
 
         ]);
     }

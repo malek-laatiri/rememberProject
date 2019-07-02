@@ -29,24 +29,19 @@ class Task
     private $description;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
-    private $date;
+    private $startHour;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $starthour;
+    private $endHour;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $endhour;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createdat;
+    private $createdAt;
 
 
     /**
@@ -63,7 +58,7 @@ class Task
     public function __construct()
     {
         $this->userTasks = new ArrayCollection();
-        $this->createdat = new \DateTime();
+        $this->createdAt = new \DateTime();
         $this->remainders = new ArrayCollection();
     }
 
@@ -97,50 +92,40 @@ class Task
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
 
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
 
     public function getStarthour(): ?\DateTimeInterface
     {
-        return $this->starthour;
+        return $this->startHour;
     }
 
     public function setStarthour(\DateTimeInterface $starthour): self
     {
-        $this->starthour = $starthour;
+        $this->startHour = $starthour;
 
         return $this;
     }
 
     public function getEndhour(): ?\DateTimeInterface
     {
-        return $this->endhour;
+        return $this->endHour;
     }
 
     public function setEndhour(\DateTimeInterface $endhour): self
     {
-        $this->endhour = $endhour;
+        $this->endHour = $endhour;
 
         return $this;
     }
 
     public function getCreatedat(): ?\DateTimeInterface
     {
-        return $this->createdat;
+        return $this->createdAt;
     }
 
     public function setCreatedat(\DateTimeInterface $createdat): self
     {
-        $this->createdat = $createdat;
+        $this->createdAt = $createdat;
 
         return $this;
     }

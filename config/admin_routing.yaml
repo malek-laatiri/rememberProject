@@ -1,0 +1,23 @@
+admin:
+  path: /
+  controller: App\Backoffice\Controller\AdminController::admin
+
+admin_tasks:
+  path: /Tasks
+  controller: App\Backoffice\Controller\AdminController::adminTasks
+
+admin_task_new:
+  path: /Task/new
+  controller: App\Backoffice\Controller\TaskController::newTask
+
+admin_task_edit:
+  path: /task/edit/{id}
+  controller: App\Backoffice\Controller\TaskController::edit
+
+admin_task_show:
+  path: /task/show/{id}
+  controller: App\Backoffice\Controller\TaskController::show
+
+admin_task_delete:
+  path: /task/delete/{id}
+  controller: App\Backoffice\Controller\TaskController::delete

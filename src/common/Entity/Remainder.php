@@ -19,7 +19,7 @@ class Remainder
     /**
      * @ORM\Column(type="datetime")
      */
-    private $remember_date;
+    private $rememberDate;
 
     /**
      * @ORM\ManyToOne(targetEntity="Task", inversedBy="remainders", cascade={"remove"})
@@ -35,7 +35,7 @@ class Remainder
 
     public function getRememberDate(): ?\DateTimeInterface
     {
-        return $this->remember_date;
+        return $this->rememberDate;
     }
 
     public function getTask(): ?Task
@@ -55,14 +55,13 @@ class Remainder
      */
     public function setRememberDate($remember_date): void
     {
-        $this->remember_date = $remember_date;
+        $this->rememberDate = $remember_date;
     }
 
     public function __toString()
     {
-        $date = $this->remember_date;
-        $result = date_format($date,"Y/m/d H:i:s");
-        return $result;
+        $date = $this->rememberDate;
+        return date_format($date,"Y/m/d H:i:s");
 
      }
 

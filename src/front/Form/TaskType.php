@@ -19,12 +19,9 @@ class TaskType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('description', TextType::class)
-            ->add('date', DateType::class, [
-                'widget' => 'single_text',
-                'attr' => ['class' => 'js-datepicker'],
-            ])
-            ->add('starthour', DateTimeType::class)
-            ->add('endhour', DateTimeType::class)
+
+            ->add('startHour', DateTimeType::class)
+            ->add('endHour', DateTimeType::class)
 
             ->add('remainders',CollectionType::class, [
                 'entry_type' => RemainderType::class,

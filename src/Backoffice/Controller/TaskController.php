@@ -8,19 +8,23 @@ use App\Backoffice\Form\TaskType;
 use App\common\Entity\UserTask;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 
 /**
- * @Route("/task")
  * Class TaskController
  * @package App\Controller
  */
 class TaskController extends AbstractController
 {
-
+    /**
+     * @param Task $task
+     * @param User $user
+     * @param bool $creator
+     * @param bool $approved
+     * @return UserTask
+     */
     public function InsertUserTask(Task $task, User $user, Bool $creator, Bool $approved)
     {
         $UserTask = new UserTask();//task creator
@@ -45,11 +49,10 @@ class TaskController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $userTask = $this->InsertUserTask($task, $user, true, true);
-            $entityManager->persist($userTask);
-
+           $entityManager->persist($userTask);
             $entityManager->persist($task);
             $entityManager->flush();
-            return $this->redirectToRoute('adminTasks');
+            return $this->redirectToRoute('admin_tasks');
         }
 
         return $this->render('task/new.html.twig', [
@@ -84,7 +87,7 @@ class TaskController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('adminTasks', [
+            return $this->redirectToRoute('admin_tasks', [
                 'id' => $task->getId(),
             ]);
         }
@@ -108,6 +111,6 @@ class TaskController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('adminTasks');
+        return $this->redirectToRoute('admin_tasks');
     }
 }

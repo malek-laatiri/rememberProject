@@ -1,6 +1,6 @@
 jQuery(document).ready(function () {
-    jQuery('.add-another-collection').click(function (e) {
-        var list = $("#user-fields-list");
+    jQuery('.add-another-collection-widget').click(function (e) {
+        var list = jQuery(jQuery(this).attr('data-list-selector'));
         // Try to find the counter of the list or use the length of the list
         var counter = list.data('widget-counter') | list.children().length;
 
@@ -18,5 +18,17 @@ jQuery(document).ready(function () {
         // create a new list element and add it to the list
         var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
         newElem.appendTo(list);
+        newElem.append('<a href="#" class="remove-tag">remove</a>');
+
+        console.log(list);
+        console.log(counter);
+        console.log(newWidget);
+        console.log(newElem);
+        $('.remove-tag').click(function(e) {
+            e.preventDefault();
+
+            $(this).parent().remove();
+
+        });
     });
 });

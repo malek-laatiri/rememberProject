@@ -31,12 +31,12 @@ class UserTask
     /**
      * @ORM\Column(type="boolean")
      */
-    private $is_creator;
+    private $isCreator;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $is_approved;
+    private $isApproved;
 
 
     public function getId(): ?int
@@ -68,26 +68,26 @@ class UserTask
         return $this;
     }
 
-    public function getIs_Creator(): ?bool
+    public function getIsCreator(): ?bool
     {
-        return $this->is_creator;
+        return $this->isCreator;
     }
 
     public function setIsCreator(bool $is_creator): self
     {
-        $this->is_creator = $is_creator;
+        $this->isCreator = $is_creator;
 
         return $this;
     }
 
     public function getIsApproved(): ?bool
     {
-        return $this->is_approved;
+        return $this->isApproved;
     }
 
     public function setIsApproved(bool $is_approved): self
     {
-        $this->is_approved = $is_approved;
+        $this->isApproved = $is_approved;
 
         return $this;
     }

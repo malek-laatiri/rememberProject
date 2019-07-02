@@ -1,0 +1,19 @@
+user_index:
+  path: /
+  controller: App\front\Controller\HomeController::index
+
+user_new_selected_day:
+  path: /day/{day}/{month}/{year}
+  controller: App\front\Controller\TaskController::NewTaskByDay
+
+scroll_calendar:
+  path: /home/{first_day}
+  controller: App\front\Controller\HomeController::home
+
+user_front_new:
+  path: /newTask
+  controller: App\front\Controller\TaskController::newTaskFront
+
+user_front_show:
+  path: /taskUser/show/{id}
+  controller: App\front\Controller\TaskController::show

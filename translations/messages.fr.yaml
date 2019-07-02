@@ -1,20 +1,20 @@
 task_labels:
-  title: titre
-  description: description
-  date: date
-  start hour: debut
-  end hour: fin
-  created at: date de creation
-  users: utilisateurs
-  tasks: taches
-  task: tache
+  Title: titre
+  Description: description
+  Start hour: debut
+  End hour: fin
+  Created at: date de creation
+  Users: utilisateurs
+  Tasks: taches
+  Task: tache
   Username: utilisateur
+
 action:
-  action: action
-  show: voir
-  edit: modifier
-  delete: supprimer
-  new: creer
-  logout: deconnecter
+  Action: action
+  Show: voir
+  Edit: modifier
+  Delete: supprimer
+  New: creer
+  Logout: deconnecter
   Create new Task: ajouter une nouvelle tache
-  back to list: retour a la liste
+  Back to list: retour a la liste

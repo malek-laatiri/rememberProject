@@ -17,7 +17,7 @@ class RemainderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('remember_date');
+            ->add('rememberDate');
 
     }
 

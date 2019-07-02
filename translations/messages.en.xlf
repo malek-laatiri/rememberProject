@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="O1at7pt" resname="task_labels.Title">
+        <source>task_labels.Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="ySB5riQ" resname="task_labels.Description">
+        <source>task_labels.Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="EhkqnNa" resname="task_labels.Start hour">
+        <source>task_labels.Start hour</source>
+        <target>Start hour</target>
+      </trans-unit>
+      <trans-unit id="ZlomurO" resname="task_labels.End hour">
+        <source>task_labels.End hour</source>
+        <target>End hour</target>
+      </trans-unit>
+      <trans-unit id="a1652HC" resname="task_labels.Created at">
+        <source>task_labels.Created at</source>
+        <target>Created at</target>
+      </trans-unit>
+      <trans-unit id="iFYUfK3" resname="task_labels.Users">
+        <source>task_labels.Users</source>
+        <target>Users</target>
+      </trans-unit>
+      <trans-unit id="M9csfgN" resname="task_labels.Tasks">
+        <source>task_labels.Tasks</source>
+        <target>Tasks</target>
+      </trans-unit>
+      <trans-unit id="WpWOExi" resname="task_labels.Task">
+        <source>task_labels.Task</source>
+        <target>Task</target>
+      </trans-unit>
+      <trans-unit id="bLtNyo8" resname="task_labels.Username">
+        <source>task_labels.Username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="c2C3hlJ" resname="action.Action">
+        <source>action.Action</source>
+        <target>Action</target>
+      </trans-unit>
+      <trans-unit id="lMf4x2E" resname="action.Show">
+        <source>action.Show</source>
+        <target>Show</target>
+      </trans-unit>
+      <trans-unit id="aT6vzvp" resname="action.Edit">
+        <source>action.Edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="WHmuxS7" resname="action.Delete">
+        <source>action.Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="Xu6ULJv" resname="action.New">
+        <source>action.New</source>
+        <target>New</target>
+      </trans-unit>
+      <trans-unit id="xzcYik0" resname="action.Logout">
+        <source>action.Logout</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="hDMLZRU" resname="action.Create new Task">
+        <source>action.Create new Task</source>
+        <target>Create new Task</target>
+      </trans-unit>
+      <trans-unit id="qX5ww1K" resname="action.Back to list">
+        <source>action.Back to list</source>
+        <target>Back to list</target>
+      </trans-unit>
+      <trans-unit id="YZdZVQP" resname="delete">
+        <source>delete</source>
+        <target>__delete</target>
+      </trans-unit>
+      <trans-unit id="ACcM9j_" resname="logout">
+        <source>logout</source>
+        <target>__logout</target>
+      </trans-unit>
+      <trans-unit id="fozSBW2" resname="Title">
+        <source>Title</source>
+        <target>__Title</target>
+      </trans-unit>
+      <trans-unit id="Um4Ah8w" resname="Description">
+        <source>Description</source>
+        <target>__Description</target>
+      </trans-unit>
+      <trans-unit id="5JW01j." resname="Start hour">
+        <source>Start hour</source>
+        <target>__Start hour</target>
+      </trans-unit>
+      <trans-unit id="hBL70AQ" resname="End hour">
+        <source>End hour</source>
+        <target>__End hour</target>
+      </trans-unit>
+      <trans-unit id="d1tb_WR" resname="Created at">
+        <source>Created at</source>
+        <target>__Created at</target>
+      </trans-unit>
+      <trans-unit id="U0M9PNE" resname="back to list">
+        <source>back to list</source>
+        <target>__back to list</target>
+      </trans-unit>
+      <trans-unit id="JiEhxTc" resname="edit">
+        <source>edit</source>
+        <target>__edit</target>
+      </trans-unit>
+      <trans-unit id="DrtCn6h" resname="task">
+        <source>task</source>
+        <target>__task</target>
+      </trans-unit>
+      <trans-unit id="0xQl2c7" resname="Create new Task">
+        <source>Create new Task</source>
+        <target>__Create new Task</target>
+      </trans-unit>
+      <trans-unit id="S8dLITV" resname="Task">
+        <source>Task</source>
+        <target>__Task</target>
+      </trans-unit>
+      <trans-unit id="qvIyBkY" resname="title">
+        <source>title</source>
+        <target>__title</target>
+      </trans-unit>
+      <trans-unit id="yQRveje" resname="description">
+        <source>description</source>
+        <target>__description</target>
+      </trans-unit>
+      <trans-unit id="DodjLNR" resname="date">
+        <source>date</source>
+        <target>__date</target>
+      </trans-unit>
+      <trans-unit id="FZikvcI" resname="start hour">
+        <source>start hour</source>
+        <target>__start hour</target>
+      </trans-unit>
+      <trans-unit id="vX1eJNr" resname="end hour">
+        <source>end hour</source>
+        <target>__end hour</target>
+      </trans-unit>
+      <trans-unit id="ko0vg2p" resname="created at">
+        <source>created at</source>
+        <target>__created at</target>
+      </trans-unit>
+      <trans-unit id="fftM9nd" resname="users">
+        <source>users</source>
+        <target>__users</target>
+      </trans-unit>
+      <trans-unit id="CFFUCEx" resname="tasks">
+        <source>tasks</source>
+        <target>__tasks</target>
+      </trans-unit>
+      <trans-unit id="EVB6Di9" resname="new">
+        <source>new</source>
+        <target>__new</target>
+      </trans-unit>
+      <trans-unit id="HGMzUJ3" resname="show">
+        <source>show</source>
+        <target>__show</target>
+      </trans-unit>
+      <trans-unit id="47ienTP" resname="Username">
+        <source>Username</source>
+        <target>__Username</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

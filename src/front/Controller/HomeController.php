@@ -11,7 +11,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
-
+    /**
+     * @param $first_day
+     * @param UserTaskRepository $UserTaskRepository
+     * @return Response
+     */
     public function home($first_day,UserTaskRepository $UserTaskRepository): Response
     {
 
@@ -29,11 +33,14 @@ class HomeController extends AbstractController
     }
 
 
-
-
+    /**
+     * @param TaskRepository $task
+     * @param UserTaskRepository $UserTaskRepository
+     * @return Response
+     */
     public function index(TaskRepository $task,UserTaskRepository $UserTaskRepository): Response
     {
-        $connecteduser=$this->getUser();
+        $connectedUser = $this->getUser();
 
         $first_day = time();
 
@@ -42,7 +49,7 @@ class HomeController extends AbstractController
 
             'first_day' => $first_day,
                'select'=>$task->findAll(),
-            'selectprime'=>$UserTaskRepository->findBy(['user'=>$connecteduser])
+            'selectprime'=>$UserTaskRepository->findBy(['user'=>$connectedUser])
 
         ]);
     }

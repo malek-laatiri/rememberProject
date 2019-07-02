@@ -1,29 +1,21 @@
 {% extends 'base.html.twig' %}
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 {% set dateNow =  month  ~'/'~ day  ~'/'~  year   %}
 
     <div>to day is {{ dateNow|date("Y-m-d") }}</div>
 
-    {% form_theme form 'bootstrap_4_layout.html.twig' %}
-
-
-
-
-<script src="{{ asset('js/index.js') }}"></script>
-<script src="{{ asset('js/addTask.js') }}"></script>
 
 <div class="container">
     {{ form_start(form) }}
     <div class="row">
         <div class="row"> {{ form_row(form.title) }}</div>
         <div class="row"> {{ form_row(form.description) }}</div>
-        <div class="row"> {{ form_row(form.date, {'value' : dateNow|date("Y-m-d")}) }}</div>
-        <div class="row"> {{ form_row(form.starthour) }}</div>
-        <div class="row"> {{ form_row(form.endhour) }}</div>
+        <div class="row"> {{ form_row(form.startHour ,{value : dateNow|date("Y-m-d H:i:s")}) }}</div>
+        <div class="row"> {{ form_row(form.endHour) }}</div>
         <ul id="email-fields-list"
             data-prototype="{{ form_widget(form.remainders.vars.prototype)|e }}"
             data-widget-tags="{{ '<li></li>'|e }}"
@@ -78,44 +70,4 @@
     </div>
 </div>
 
-{% endblock %}
-{% block javascripts %}
-    <script>
-        jQuery(document).ready(function () {
-            jQuery('.add-another-collection-widget').click(function (e) {
-                var list = jQuery(jQuery(this).attr('data-list-selector'));
-                // Try to find the counter of the list or use the length of the list
-                var counter = list.data('widget-counter') | list.children().length;
-
-                // grab the prototype template
-                var newWidget = list.attr('data-prototype');
-                // replace the "__name__" used in the id and name of the prototype
-                // with a number that's unique to your emails
-                // end name attribute looks like name="contact[emails][2]"
-                newWidget = newWidget.replace(/__name__/g, counter);
-                // Increase the counter
-                counter++;
-                // And store it, the length cannot be used if deleting widgets is allowed
-                list.data('widget-counter', counter);
-
-                // create a new list element and add it to the list
-                var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
-                newElem.appendTo(list);
-                newElem.append('<a href="#" class="remove-tag">x</a>');
-
-                console.log(list);
-                console.log(counter);
-                console.log(newWidget);
-                console.log(newElem);
-                $('.remove-tag').click(function(e) {
-                    e.preventDefault();
-
-                    $(this).parent().remove();
-
-                });
-            });
-        });
-
-
-    </script>
 {% endblock %}

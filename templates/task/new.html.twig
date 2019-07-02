@@ -8,14 +8,5 @@
 
     {{ include('task/_form.html.twig') }}
 
-    <a href="{{ path('adminTasks') }}">{% trans %}back to list{% endtrans %}</a>
-{% endblock %}
-{% block javascripts %}
-    <script>
-        $(document).ready(function () {
-            $('.js-datepicker').datepicker({
-                format: 'yyyy-mm-dd'
-            });
-        });
-    </script>
+    <a href="{{ path('admin_tasks') }}">{% trans %}back to list{% endtrans %}</a>
 {% endblock %}
