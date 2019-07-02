@@ -6,7 +6,8 @@ use App\common\Entity\Task;
 use App\common\Entity\User;
 use App\front\Form\TaskType;
 use App\common\Entity\UserTask;
-use App\front\Form\UserTaskType;
+use App\front\Repository\TaskRepository;
+use App\front\Repository\UserTaskRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -41,14 +42,12 @@ class TaskController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $userTask = $this->InsertUserTask($task, $user, false);
+            $userTask = $this->InsertUserTask($task, $user, true);
             $userTask->setIsApproved(true);
-            foreach ($userTask->getUser() as $value)
-            {
-                $newUser=$this->InsertUserTask($task,$value,false);
+            foreach ($userTask->getUser() as $value) {
+                $newUser = $this->InsertUserTask($task, $value, false);
+                $newUser->setIsCreator(false);
                 $entityManager->persist($newUser);
-
-
             }
             $entityManager->persist($userTask);
 
@@ -65,14 +64,17 @@ class TaskController extends AbstractController
     }
 
 
+    /**
+     * @param $day
+     * @param $month
+     * @param $year
+     * @param Request $request
+     * @return Response
+     */
 
-
-
-    public function day($day, $month, $year,Request $request): Response
+    public function NewTaskByDay($day, $month, $year, Request $request): Response
     {
-        $time = strtotime($month.'/'.$day.'/'.$year);
-
-        $newformat = date('m/d/Y',$time);
+        $time = strtotime($month . '/' . $day . '/' . $year);
 
 
         $task = new Task();
@@ -83,9 +85,8 @@ class TaskController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $userTask = $this->InsertUserTask($task, $user, true);
             $userTask->setIsApproved(true);
-            foreach ($userTask->getUser() as $value)
-            {
-                $newUser=$this->InsertUserTask($task,$value,false);
+            foreach ($userTask->getUser() as $value) {
+                $newUser = $this->InsertUserTask($task, $value, false);
                 $entityManager->persist($newUser);
 
 
@@ -110,7 +111,32 @@ class TaskController extends AbstractController
     }
 
 
+    /**
+     * @param $day
+     * @param $month
+     * @param $year
+     * @param Request $request
+     * @return Response
+     */
 
+    public function AllTasksByDay($day, $month, $year, Request $request, TaskRepository $repository): Response
+    {
+        $connecteduser = $this->getUser();
+
+        $time = strtotime($month . '/' . $day . '/' . $year);
+        $newformat = date('m/d/Y ', $time);
+
+        return $this->render('front/allTasks.html.twig', [
+
+            'day' => $day,
+            'month' => $month,
+            'year' => $year,
+            'rep' =>$repository->findAll()
+
+
+
+        ]);
+    }
 
 
     /**
@@ -118,10 +144,14 @@ class TaskController extends AbstractController
      * @return Response
      */
 
-    public function show(Task $task): Response
+    public function show(Task $task, UserTaskRepository $UserTaskRepository): Response
     {
-        return $this->render('task/show.html.twig', [
+        $connecteduser = $this->getUser();
+
+        return $this->render('front/show.html.twig', [
             'task' => $task,
+            'selectprime' => $UserTaskRepository->findBy(['user' => $connecteduser])
+
         ]);
     }
 

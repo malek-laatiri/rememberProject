@@ -68,7 +68,7 @@ class UserTask
         return $this;
     }
 
-    public function getIsCreator(): ?bool
+    public function getIs_Creator(): ?bool
     {
         return $this->is_creator;
     }
@@ -94,7 +94,7 @@ class UserTask
 
     public function __construct()
     {
-        $this->setIsCreator(true);
+        $this->setIsCreator(false);
 
     }
 

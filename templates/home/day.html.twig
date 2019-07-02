@@ -101,13 +101,20 @@
                 // create a new list element and add it to the list
                 var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
                 newElem.appendTo(list);
+                newElem.append('<a href="#" class="remove-tag">x</a>');
+
                 console.log(list);
                 console.log(counter);
                 console.log(newWidget);
                 console.log(newElem);
+                $('.remove-tag').click(function(e) {
+                    e.preventDefault();
+
+                    $(this).parent().remove();
+
+                });
             });
         });
-
 
 
     </script>

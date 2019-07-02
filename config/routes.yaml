@@ -32,7 +32,7 @@ user_index:
 
 selected_day:
   path: /day/{day}/{month}/{year}
-  controller: App\front\Controller\TaskController::day
+  controller: App\front\Controller\TaskController::NewTaskByDay
 
 scroll_calendar:
   path: /home/{first_day}
@@ -41,3 +41,10 @@ scroll_calendar:
 taskfront_new:
   path: /newFrontTask
   controller: App\front\Controller\TaskController::newTaskFront
+task_showUser:
+  path: /taskUser/show/{id}
+  controller: App\front\Controller\TaskController::show
+
+all_tasks_by_date:
+  path: /alltasks/{day}/{month}/{year}
+  controller: App\front\Controller\TaskController::AllTasksByDay

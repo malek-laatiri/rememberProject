@@ -30,12 +30,14 @@ class TaskType extends AbstractType
                 'entry_type' => RemainderType::class,
                 'allow_add' => true,
                 'prototype' => true,
-                'by_reference' => false])
+                'by_reference' => false,
+                'label' => false])
             ->add('userTasks',CollectionType::class, [
                 'entry_type' => UserTaskType::class,
                 'allow_add' => true,
                 'prototype' => true,
-                'by_reference' => false])
+                'by_reference' => false,
+                'label' => false])
             ;
     }
 
