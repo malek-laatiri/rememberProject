@@ -133,8 +133,6 @@ class TaskController extends AbstractController
             'year' => $year,
             'rep' =>$repository->findAll()
 
-
-
         ]);
     }
 
@@ -169,7 +167,7 @@ class TaskController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('adminTasks', [
+            return $this->redirectToRoute('user_index', [
                 'id' => $task->getId(),
             ]);
         }
@@ -193,6 +191,6 @@ class TaskController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('adminTasks');
+        return $this->redirectToRoute('user_index');
     }
 }
