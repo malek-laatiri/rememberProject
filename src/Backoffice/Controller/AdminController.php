@@ -2,11 +2,10 @@
 
 namespace App\Backoffice\Controller;
 
-use App\Backoffice\Repository\TaskRepository;
-use App\Backoffice\Repository\UserRepository;
+use App\Common\Repository\TaskRepository;
+use App\Common\Repository\UserRepository;
+use App\Common\Repository\UserTaskRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class AdminController
@@ -34,12 +33,13 @@ class AdminController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      *
      */
-    public function adminTasks(TaskRepository $repositoryT)
+    public function adminTasks(UserTaskRepository $UserTaskRepository)
     {
-        $tasks = $repositoryT->findAll();
+        $connectedUser=$this->getUser();
+
         return $this->render('admin/tasks.html.twig', [
             'controller_name' => 'AdminController',
-            'tasks' => $tasks
+            'tasks' => $UserTaskRepository->findBy(['user'=>$connectedUser])
         ]);
     }
 }

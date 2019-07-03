@@ -1,2 +1,9 @@
-{% for i in rep %}
-{{ i.title }}{% endfor %}
+{% set dateNow =  month  ~'/'~ day  ~'/'~  year %}
+
+<div>to day is {{ dateNow|date("Y-m-d") }}</div>
+{% for i in tasks %}
+
+    {% if i.task.startHour|date("Y-m-d") ==dateNow|date("Y-m-d") %}
+        <a href="{{ path('user_front_show', {'id': i.task.id}) }}">{{ i.task.title }}</a><br>
+
+    {% endif %}{% endfor %}

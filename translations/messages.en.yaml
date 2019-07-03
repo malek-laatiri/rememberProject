@@ -10,7 +10,6 @@ task_labels:
   Username: Username
   starthour: Start hour
   Endhour: End hour
-
 action:
   Action: Action
   Show: Show

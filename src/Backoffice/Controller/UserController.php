@@ -2,7 +2,7 @@
 
 namespace App\Backoffice\Controller;
 
-use App\common\Entity\User;
+use App\Common\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

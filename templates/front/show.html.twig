@@ -16,27 +16,24 @@
                     <tbody>
 
                     <tr>
-                        <th>{% trans %}title{% endtrans %}</th>
+                        <th>{% trans %}Title{% endtrans %}</th>
                         <td>{{ task.title }}</td>
                     </tr>
                     <tr>
-                        <th>{% trans %}description{% endtrans %}</th>
+                        <th>{% trans %}Description{% endtrans %}</th>
                         <td>{{ task.description }}</td>
                     </tr>
+
                     <tr>
-                        <th>{% trans %}date{% endtrans %}</th>
-                        <td>{{ task.date ? task.date|date('Y-m-d') : '' }}</td>
-                    </tr>
-                    <tr>
-                        <th>{% trans %}start hour{% endtrans %}</th>
+                        <th>{% trans %}Start hour{% endtrans %}</th>
                         <td>{{ task.starthour ? task.starthour|date('Y-m-d H:i:s') : '' }}</td>
                     </tr>
                     <tr>
-                        <th>{% trans %}end hour{% endtrans %}</th>
+                        <th>{% trans %}End hour{% endtrans %}</th>
                         <td>{{ task.endhour ? task.endhour|date('Y-m-d H:i:s') : '' }}</td>
                     </tr>
                     <tr>
-                        <th>{% trans %}created at{% endtrans %}</th>
+                        <th>{% trans %}Created at{% endtrans %}</th>
                         <td>{{ task.createdat ? task.createdat|date('Y-m-d H:i:s') : '' }}</td>
                     </tr>
 
@@ -51,9 +48,9 @@
 
                 {% for i in selectprime %}
 
-                {% if i.task.id == task.id and i.is_creator %}
+                {% if i.task.id == task.id and i.isCreator %}
                 <th>
-                    <button type="button" class="btn "><a href="{{ path('task_edit', {'id': task.id}) }}">{% trans %}edit{% endtrans %}</a></button>
+                    <button type="button" class="btn "><a href="{{ path('user_front_edit', {'id': task.id}) }}">{% trans %}edit{% endtrans %}</a></button>
                 </th>
                     &nbsp
                     <th id="l">{{ include('task/_delete_form.html.twig') }}</th>

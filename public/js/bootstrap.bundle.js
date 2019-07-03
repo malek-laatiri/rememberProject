@@ -1735,12 +1735,12 @@
   }
 
   /**
-   * Finds the offset parent common to the two provided nodes
+   * Finds the offset parent Common to the two provided nodes
    * @method
    * @memberof Popper.Utils
    * @argument {Element} element1
    * @argument {Element} element2
-   * @returns {Element} common offset parent
+   * @returns {Element} Common offset parent
    */
   function findCommonOffsetParent(element1, element2) {
     // This check is needed to avoid errors in case one of the elements isn't defined for any reason
@@ -1753,7 +1753,7 @@
     var start = order ? element1 : element2;
     var end = order ? element2 : element1;
 
-    // Get common ancestor container
+    // Get Common ancestor container
     var range = document.createRange();
     range.setStart(start, 0);
     range.setEnd(end, 0);
@@ -3235,7 +3235,7 @@
     var useHeight = ['right', 'left'].indexOf(basePlacement) !== -1;
 
     // Split the offset string to obtain a list of values and operands
-    // The regex addresses values with the plus or minus sign in front (+10, -20, etc)
+    // The regex addresses values with the plus or minus sign in Front (+10, -20, etc)
     var fragments = offset.split(/(\+|\-)/).map(function (frag) {
       return frag.trim();
     });

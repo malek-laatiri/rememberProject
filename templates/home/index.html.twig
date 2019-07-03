@@ -72,7 +72,7 @@
                                 {% set y = first_day|date("m") %}
                                 {% set z =  first_day|date("Y") %}
                                 <a role="button" class="btn popovers" data-toggle="popover" title=""
-                                   data-content="ajouter <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>tache</a><br>voir <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>les taches</a>"
+                                   data-content="ajouter <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>tache</a><br>voir <a href='{{ path('show_tasks_selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>les taches</a>"
                                    data-original-title="test title">
                                     <div style="color: white;padding-top: 3px;" class="dot">{{ day }}</div>
                                 </a>
@@ -83,7 +83,7 @@
                                 {% set z =  first_day|date("Y") %}
 
                                 <a role="button" class="btn popovers" data-toggle="popover" title=""
-                                   data-content="ajouter <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>tache</a><br> voir <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>les taches</a>"
+                                   data-content="ajouter <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>tache</a><br> voir <a href='{{ path('show_tasks_selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>les taches</a>"
                                    data-originasl-title="test title">
                                     {{ day }}</a>                        {% endif %}
 
@@ -91,12 +91,19 @@
                         {% set dateNow =  y  ~'/'~ x  ~'/'~  z %}
                         <div>
                             {% for i in selectprime %}
-                                {% if i.task.starthour|date("Y-m-d") == dateNow|date("Y-m-d") %}
-
+                                {% if i.task.starthour|date("Y-m-d") == dateNow|date("Y-m-d")%}
                                     <a href="{{ path('user_front_show', {'id': i.task.id}) }}">{{ i.task.title }}</a><br>
 
                                 {% endif %}
+
                             {% endfor %}
+                            {% for y in adminTasks %}
+                                {% if y.task.startHour|date("Y-m-d") == dateNow|date("Y-m-d") %}
+
+                                    <a class="admin" href="{{ path('user_front_show', {'id': y.task.id}) }}">{{ y.task.title }}</a><br>
+                                {% endif %}
+                            {% endfor %}
+
                         </div>
                     </div>
                 </td>

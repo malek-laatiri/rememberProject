@@ -11,5 +11,5 @@ fos_user:
 
 index:
   path: /
-  controller: App\front\Controller\HomeController::index
+  controller: App\Front\Controller\HomeController::index
 

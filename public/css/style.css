@@ -16,3 +16,7 @@
 #logout{
     float: right;
 }
+
+.admin{
+    color: darkred;
+}
