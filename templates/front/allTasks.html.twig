@@ -1,9 +1,64 @@
-{% set dateNow =  month  ~'/'~ day  ~'/'~  year %}
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% set dateNow =  month  ~'/'~ day  ~'/'~  year %}
 
-<div>to day is {{ dateNow|date("Y-m-d") }}</div>
-{% for i in tasks %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('fonts/font-awesome-5.9.0/css/all.css') }}"/>
 
-    {% if i.task.startHour|date("Y-m-d") ==dateNow|date("Y-m-d") %}
-        <a href="{{ path('user_front_show', {'id': i.task.id}) }}">{{ i.task.title }}</a><br>
+    <link rel="stylesheet" href="{{ asset('vendor/animate/animate.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('vendor/select2/select2.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/FrontTasksUtil.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/FrontTasksMain.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
 
-    {% endif %}{% endfor %}
+
+
+
+
+
+    <div class="table100 ver5 m-b-110">
+        <div class="table100-head">
+            <table>
+                <thead>
+                <tr class="row100 head">
+                    <th class="cell100 column1">Task</th>
+                    <th class="cell100 column2">description</th>
+                    <th class="cell100 column3">Hours</th>
+                    <th class="cell100 column4">action</th>
+
+
+                </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div class="table100-body js-pscroll">
+            <table>
+                <tbody>
+                {% for i in tasks %}
+                    {% if i.task.startHour|date("Y-m-d") ==dateNow|date("Y-m-d") %}
+                        <tr class="row100 body">
+                            <td class="cell100 column1">{{ i.task.title }}</td>
+                            <td class="cell100 column2">{{ i.task.description }}</td>
+
+                            <td class="cell100 column3">{{ i.task.startHour|date("H:i") }}
+                                --{{ i.task.endHour|date("H:i") }}</td>
+                            <td class="cell100 column4"><a
+                                        href="{{ path('user_front_show', {'id': i.task.id}) }}">show</a><br></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+{% endblock body %}

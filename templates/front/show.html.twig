@@ -36,7 +36,19 @@
                         <th>{% trans %}Created at{% endtrans %}</th>
                         <td>{{ task.createdat ? task.createdat|date('Y-m-d H:i:s') : '' }}</td>
                     </tr>
+                    <tr>
+                        <th>{% trans %}participants{% endtrans %}</th>
+                        <td>
 
+                        {% for participant in task.userTasks %}
+                            {% if participant.user %}
+
+                            {{ participant.user.username }}<br>
+                            {% endif %}
+
+                        {% endfor %}
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -53,7 +65,7 @@
                     <button type="button" class="btn "><a href="{{ path('user_front_edit', {'id': task.id}) }}">{% trans %}edit{% endtrans %}</a></button>
                 </th>
                     &nbsp
-                    <th id="l">{{ include('task/_delete_form.html.twig') }}</th>
+                    <th id="l">{{ include('front/_delete_form.html.twig') }}</th>
                     </td>
 
                     </tr>

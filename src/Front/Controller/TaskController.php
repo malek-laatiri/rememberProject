@@ -124,7 +124,7 @@ class TaskController extends AbstractController
      */
     public function edit(Request $request, Task $task): Response
     {
-        $form = $this->createForm(TaskType::class, $task,['user'=>$this->getUser()]);
+        $form = $this->createForm(TaskType::class, $task);
 
         $form->handleRequest($request);
 
@@ -136,7 +136,7 @@ class TaskController extends AbstractController
             ]);
         }
 
-        return $this->render('task/edit.html.twig', [
+        return $this->render('front/edit.html.twig', [
             'task' => $task,
             'form' => $form->createView(),
         ]);

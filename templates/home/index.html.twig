@@ -1,131 +1,174 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}"/>
+<link rel="stylesheet" href="{{ asset('fonts/font-awesome-5.9.0/css/all.css') }}"/>
+
+<link rel="stylesheet" href="{{ asset('vendor/animate/animate.css') }}"/>
+<link rel="stylesheet" href="{{ asset('vendor/select2/select2.min.css') }}"/>
+<link rel="stylesheet" href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}"/>
+<link rel="stylesheet" href="{{ asset('css/util.css') }}"/>
+<link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
 <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
 
+
 {% block body %}
-    <button class="btn" id="logout"><a href="{{ path('fos_user_security_logout') }}">{% trans %}logout{% endtrans %}</a>
-    </button>
-    <button class="btn" id="logout">{{ app.user.username }}</button>
-
-    <div id="calendar">
-        {% set PlusMonth = first_day|date_modify("+1 month")|date('U') %}
-        {% set LessMonth = first_day|date_modify("-1 month")|date('U') %}
-        {% set PlusYear = first_day|date_modify("+1 year")|date('U') %}
-        {% set LessYear = first_day|date_modify("-1 year")|date('U') %}
-        <div><a href='{{ path('user_index') }}' title='test add link'>Aujourd'hui</a></div>
-        <div><a href='{{ path('user_front_new') }}' title='test add link'>add</a></div>
 
 
-        <center>
-            <table>
-                <tr><a href="{{ path('scroll_calendar',{first_day: LessMonth}) }}" class="room-price"><<</a></tr>
-                <tr>    {{ first_day|date('F') }}</tr>
-                <tr><a href="{{ path('scroll_calendar',{first_day: PlusMonth}) }}" class="room-price">>></a>
-                </tr>
-                <tr>&nbsp;&nbsp;</tr>
-                <tr><a href="{{ path('scroll_calendar',{first_day: LessYear}) }}" class="room-price"><<</a></tr>
 
-                <tr>    {{ first_day|date('Y') }}
-                <tr><a href="{{ path('scroll_calendar',{first_day: PlusYear}) }}" class="room-price">>></a></tr>
-
-                </tr>
-            </table>
-        </center>
+    {#new template starts here#}
+    <div class="limiter">
+        <button class="btn" id="logout"><a
+                    href="{{ path('fos_user_security_logout') }}">{% trans %}logout{% endtrans %}</a>
+        </button>
+        <button class="btnlog" id="logout"><i class="fas fa-user"></i>&nbsp {{ app.user.username }}</button>
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100 ver1 m-b-110">
 
 
-        <table style="width:100%" border="1">
-            <thead>
-            <center>
-                <h1> {{ first_day|date('F') }}  {{ first_day|date('Y') }}</h1>
+                    <div id="calendar">
+                        {% set PlusMonth = first_day|date_modify("+1 month")|date('U') %}
+                        {% set LessMonth = first_day|date_modify("-1 month")|date('U') %}
+                        {% set PlusYear = first_day|date_modify("+1 year")|date('U') %}
+                        {% set LessYear = first_day|date_modify("-1 year")|date('U') %}
+                        <div><a href='{{ path('user_index') }}' title='today'>Today</a></div>
+                        <div><a href='{{ path('user_front_new') }}' title='add task '><i style="float: right"
+                                                                                         class="fas fa-plus-circle"></i>
+                            </a></div>
 
-                {% set startDow = first_day|date('F 1\\s\\t Y')|date('w')-1 %}
-                {#  month number {{ first_day|date('m')-1 }}#}
 
-            </center>
-            <tr>
-            <tr>
-                <th>LUN.</th>
-                <th>MAR.</th>
-                <th>MER.</th>
-                <th>JEU.</th>
-                <th>VEN.</th>
-                <th>SAM.</th>
-                <th>DIM.</th>
-            </tr>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                {% set daysInMonth = first_day|date('t') %}
-                {% set startDow = first_day|date('F 1\\s\\t Y')|date('w')-1 %}
-                {% set dow = startDow %}
-                {% for day in range(1,daysInMonth) %}
-                {% if loop.first and startDow != 0 %}
-                    <td colspan="{{ startDow }}"></td>
-                {% endif %}
-                <td>
-                    <div>
-                        <div>
-                            {% if ("now"|date("m")==first_day|date("m")) and ("now"|date("d")==day) and ("now"|date("y")==first_day|date("y")) %}
+                        <center style="margin-bottom: 30px;">
+                            <table>
+                                <tr><a href="{{ path('scroll_calendar',{first_day: LessMonth}) }}" class="room-price"><i
+                                                class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                                    </a></tr>
+                                <tr>{{ first_day|date('F') }}</tr>
+                                <tr><a href="{{ path('scroll_calendar',{first_day: PlusMonth}) }}" class="room-price"><i
+                                                class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                    </a>
+                                </tr>
+                                <tr>&nbsp;&nbsp;</tr>
+                                <tr><a href="{{ path('scroll_calendar',{first_day: LessYear}) }}" class="room-price"><i
+                                                class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                                    </a></tr>
+
+                                <tr>    {{ first_day|date('Y') }}
+                                <tr><a href="{{ path('scroll_calendar',{first_day: PlusYear}) }}" class="room-price"><i
+                                                class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                    </a></tr>
+
+                                </tr>
+                            </table>
+                        </center>
+                        <table data-vertable="ver1">
+                            <thead>
+
+                            <tr class="row100 head">
+
+                                <th class="column100 column2" data-column="column2">Monday</th>
+                                <th class="column100 column3" data-column="column3">Tuesday</th>
+                                <th class="column100 column4" data-column="column4">Wednesday</th>
+                                <th class="column100 column5" data-column="column5">Thursday</th>
+                                <th class="column100 column6" data-column="column6">Friday</th>
+                                <th class="column100 column7" data-column="column7">Saturday</th>
+                                <th class="column100 column8" data-column="column8">Sunday</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% set daysInMonth = first_day|date('t') %}
+                            {% set startDow = first_day|date('F 1\\s\\t Y')|date('w')-1 %}
+                            {% set dow = startDow %}
+                            {% for day in range(1,daysInMonth) %}
+                            {% if loop.first and startDow != 0 %}
+                            <td colspan="{{ startDow }}">
+                                {% endif %}
+                            <td class="column100 column{{ dow+2 }}" data-column="column{{ dow+2 }}">
+                                {% if ("now"|date("m")==first_day|date("m")) and ("now"|date("d")==day) and ("now"|date("y")==first_day|date("y")) %}
                                 {% set x =  "%02d"|format(day) %}
                                 {% set y = first_day|date("m") %}
                                 {% set z =  first_day|date("Y") %}
                                 <a role="button" class="btn popovers" data-toggle="popover" title=""
-                                   data-content="ajouter <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>tache</a><br>voir <a href='{{ path('show_tasks_selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>les taches</a>"
+                                   data-content="ajouter <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='add tasks'>tache</a><br>voir <a href='{{ path('show_tasks_selected_day',{day:x ,month:y,year:z}) }}' title='all tasks'>les taches</a>"
                                    data-original-title="test title">
-                                    <div style="color: white;padding-top: 3px;" class="dot">{{ day }}</div>
+                                    <div style="color: white;" class="dot">{{ day }}</div>
                                 </a>
 
-                            {% else %}
+                                {% else %}
                                 {% set x =  "%02d"|format(day) %}
                                 {% set y = first_day|date("m") %}
                                 {% set z =  first_day|date("Y") %}
 
                                 <a role="button" class="btn popovers" data-toggle="popover" title=""
-                                   data-content="ajouter <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>tache</a><br> voir <a href='{{ path('show_tasks_selected_day',{day:x ,month:y,year:z}) }}' title='test add link'>les taches</a>"
+                                   data-content="ajouter <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='add task'>tache</a><br> voir <a href='{{ path('show_tasks_selected_day',{day:x ,month:y,year:z}) }}' title='all tasks'>les taches</a>"
                                    data-originasl-title="test title">
-                                    {{ day }}</a>                        {% endif %}
-
-                        </div>
-                        {% set dateNow =  y  ~'/'~ x  ~'/'~  z %}
-                        <div>
-                            {% for i in selectprime %}
-                                {% if i.task.starthour|date("Y-m-d") == dateNow|date("Y-m-d")%}
-                                    <a href="{{ path('user_front_show', {'id': i.task.id}) }}">{{ i.task.title }}</a><br>
-
+                                    {{ day }}</a>
                                 {% endif %}
 
-                            {% endfor %}
-                            {% for y in adminTasks %}
-                                {% if y.task.startHour|date("Y-m-d") == dateNow|date("Y-m-d") %}
+                                {% set dateNow =  y  ~'/'~ x  ~'/'~  z %}
+                                <div>
+                                    {% for i in selectprime %}
+                                        {% if i.task.starthour|date("Y-m-d") == dateNow|date("Y-m-d") %}
+                                            <a style="color:black"
+                                               href="{{ path('user_front_show', {'id': i.task.id}) }}">{{ i.task.title }} {{ i.task.startHour|date('H:i') }}</a>
+                                            <br>
 
-                                    <a class="admin" href="{{ path('user_front_show', {'id': y.task.id}) }}">{{ y.task.title }}</a><br>
+                                        {% endif %}
+
+                                    {% endfor %}
+                                    {% for y in adminTasks %}
+                                    {% if y.task.startHour|date("Y-m-d") == dateNow|date("Y-m-d") %}
+                                        <a class="admin"
+                                           href="{{ path('user_front_show', {'id': y.task.id}) }}">{{ y.task.title }} </a>
+                                        <br>
+                                    {% endif %}
+                                {% endfor %}</td>
+
+                            {% if loop.last and dow != 6 %}
+                                <td class="row100" colspan="{{ 6 - dow }}">&nbsp;</td>
+                            {% endif %}
+                            {% if dow == 6 %}
+                            {% set dow = 0 %}
+                            </tr>
+                            <tr class="row100">
+                                {% else %}
+                                    {% set dow = dow + 1 %}
+
                                 {% endif %}
-                            {% endfor %}
+                                {% endfor %}
+                            </tr>
 
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
-                </td>
-                {% if loop.last and dow != 6 %}
-                    <td colspan="{{ 6 - dow }}">&nbsp;</td>
-                {% endif %}
-                {% if dow == 6 %}
-                {% set dow = 0 %}
-            </tr>
-            <tr>
-                {% else %}
-                    {% set dow = dow + 1 %}
-                {% endif %}
-                {% endfor %}
-            </tr>
-            </tbody>
-        </table>
+
+
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+
+    {# end template#}
+
+
+
+
+
+
 
 
 {% endblock %}
 {% block javascripts %}
+    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+
+
+
     <script>
         $(document).ready(function () {
             $('[data-toggle="popover"]').popover({html: true});

@@ -40,6 +40,7 @@
                         <td>{{ task.createdat ? task.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                     </tr>
 
+
                     </tbody>
                 </table>
             </div>
@@ -52,9 +53,11 @@
                 <th>
                     <button type="button" class="btn "><a href="{{ path('admin_task_edit', {'id': task.id}) }}">{% trans %}edit{% endtrans %}</a></button>
                 </th>
+                {% set idt = task.id %}
 
                 &nbsp
-                <th id="l">{{ include('task/_delete_form.html.twig') }}</th>
+                <th id="l"> <button type="button" class="btn "><a
+                                href="{{ path('admin_task_delete', {'id': idt}) }}">{% trans %}Delete{% endtrans %}</a></button></th></th>
                 </td>
 
                 </tr>

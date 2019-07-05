@@ -1,52 +1,52 @@
-{% extends 'base.html.twig' %}
 {% block body %}
 
-<div class="container">
-    {{ form_start(form) }}
-    {{ dump(form) }}
+    <div class="container">
+        <h1>{% trans %}edit{% endtrans %} {% trans %} task{% endtrans %}</h1>
 
-    <div class="row">
-        <div class="row"> {{ form_row(form.title) }}</div>
-        <div class="row"> {{ form_row(form.description) }}</div>
-        <div class="row"> {{ form_row(form.startHour) }}</div>
-        <div class="row"> {{ form_row(form.endHour) }}</div>
-        <ul id="email-fields-list"
-            data-prototype="{{ form_widget(form.remainders.vars.prototype)|e }}"
-            data-widget-tags="{{ '<li></li>'|e }}"
-            data-widget-counter="{{ form.children|length }}">
-            {% for emailField in form.remainders %}
-                <li>
-                    {{ form_errors(emailField) }}
-                    {{ form_widget(emailField) }}
-                </li>
-            {% endfor %}
-        </ul>
-        <button type="button"
-                class="add-another-collection-widget"
-                data-list-selector="#email-fields-list">Add another date
-        </button>
+        {{ form_start(form) }}
+
+        <div class="row">
+            <div class="row"> {{ form_row(form.title) }}</div>
+            <div class="row"> {{ form_row(form.description) }}</div>
+            <div class="row"> {{ form_row(form.startHour) }}</div>
+            <div class="row"> {{ form_row(form.endHour) }}</div>
+            <ul id="email-fields-list"
+                data-prototype="{{ form_widget(form.remainders.vars.prototype)|e }}"
+                data-widget-tags="{{ '<li></li>'|e }}"
+                data-widget-counter="{{ form.children|length }}">
+                {% for emailField in form.remainders %}
+                    <li>
+                        {{ form_errors(emailField) }}
+                        {{ form_widget(emailField) }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="button"
+                    class="add-another-collection-widget"
+                    data-list-selector="#email-fields-list">Add another date
+            </button>
 
 
-        <ul id="user-fields-list"
-            data-prototype="{{ form_widget(form.userTasks.vars.prototype)|e }}"
-            data-widget-tags="{{ '<li></li>'|e }}"
-            data-widget-counter="{{ form.children|length }}">
-            {% for emailField in form.userTasks %}
-                <li>
-                    {{ form_errors(emailField) }}
-                    {{ form_widget(emailField) }}
-                </li>
-            {% endfor %}
-        </ul>
-        <button type="button"
-                class="add-another-collection"
-                data-list-selector="user-fields-list">Add another user
-        </button>
-        <div class="row" >
-        <button class="btn">{{ button_label|default('Save') }}</button>
+            <ul id="user-fields-list"
+                data-prototype="{{ form_widget(form.userTasks.vars.prototype)|e }}"
+                data-widget-tags="{{ '<li></li>'|e }}"
+                data-widget-counter="{{ form.children|length }}">
+                {% for emailField in form.userTasks %}
+                    <li>
+                        {{ form_errors(emailField) }}
+                        {{ form_widget(emailField) }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="button"
+                    class="add-another-collection"
+                    data-list-selector="user-fields-list">Add another user
+            </button>
+            <div class="row">
+                <button class="btn">{{ button_label|default('Save') }}</button>
+            </div>
+            {{ form_end(form) }}
         </div>
-        {{ form_end(form) }}
     </div>
-</div>
 
 {% endblock %}

@@ -63,6 +63,7 @@
                             <button type="button" class="btn "><a
                                         href="{{ path('admin_task_edit', {'id': i.task.id}) }}">{% trans %}Edit{% endtrans %}</a></button>
                         </th>
+                        {% set idt = i.task.id %}
 
                         <th id="l">{{ include('task/_delete_form.html.twig') }}</th>
                         </td>

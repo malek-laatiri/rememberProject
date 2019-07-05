@@ -22,10 +22,10 @@ class HomeController extends AbstractController
     {
 
         $connectedUser = $this->getUser();
-        $role= "ROLE_SUPER_ADMIN";
+        $role = "ROLE_SUPER_ADMIN";
 
 
-        $adminTasks=$userRepository->findByRole( $role);
+        $adminTasks = $userRepository->findByRole($role);
         return $this->render('home/index.html.twig', [
 
             'first_day' => $first_day,

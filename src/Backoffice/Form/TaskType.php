@@ -38,6 +38,7 @@ class TaskType extends AbstractType
                 $userTask
                     ->setIsCreator(true)
                     ->setTask($task)
+                    ->setIsApproved(true)
                     ->setUser($currentUser=$form->getConfig()->getOption('user'));
 
 
