@@ -23,9 +23,7 @@ class UserTaskType extends AbstractType
             'data_class' => UserTask::class,
             'allow_add' => true,
             'allow delete'=>true,
-            'multiple'=>true,'
-            prototype' => true,
-            'prototype_data' => 'New Tag Placeholder',
+            'multiple'=>true,
 
         ]);
     }
