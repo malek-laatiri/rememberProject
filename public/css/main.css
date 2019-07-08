@@ -104,7 +104,7 @@ iframe {
 .container-table100 {
   width: 100%;
   min-height: 100vh;
-  background: #d1d1d1;
+    background-color: #f8f9fa;
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -161,6 +161,12 @@ th, td {
   font-size: 15px;
   color: #808080;
   line-height: 1.4;
+
+}
+#shows{
+    width:137.6px;
+    height: 140.6px;
+
 }
 
 .table100.ver1 th {

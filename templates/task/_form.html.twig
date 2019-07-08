@@ -1,20 +1,63 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="{{ asset('js/index.js') }}"></script>
-<script src="{{ asset('js/addTask.js') }}"></script>
-<div class="container">
-{{ form_start(form) }}
-<div class="row">
-    <div class="row"> {{ form_row(form.title) }}</div>
-    <div class="row"> {{ form_row(form.description) }}</div>
-            <div class="row"> {{ form_row(form.startHour) }}</div>
-                <div class="row"> {{ form_row(form.endHour) }}</div>
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 
 
-<button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
-</div></div>
 
+<body class="skin-blue">
+<div class="wrapper">
+
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Dashboard
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> <a
+                                href="{{ path('fos_user_security_logout') }}">{% trans %}Logout{% endtrans %}</a></a>
+                </li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">{% trans %}Users{% endtrans %}</h3>
+
+                        </div>
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                    {{ form_start(form) }}
+                                {{ form_row(form.title) }}
+                            {{ form_row(form.description) }}
+                       {{ form_row(form.startHour) }}
+                       {{ form_row(form.endHour) }}
+
+
+
+                        <button class="btn">{{ button_label|default('Save') }}</button>
+                        {{ form_end(form) }}
+                                    </tbody>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+
+</div><!-- ./wrapper -->
 
 {% block javascripts %}
 {% endblock %}

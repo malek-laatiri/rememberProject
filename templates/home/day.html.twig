@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseFront.html.twig' %}
     {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
@@ -6,16 +6,13 @@
 
 {% set dateNow =  month  ~'/'~ day  ~'/'~  year   %}
 
-    <div>to day is {{ dateNow|date("Y-m-d") }}</div>
+    <div class="d-flex justify-content-center" style="margin-top: 50px;">
 
-
-<div class="container">
     {{ form_start(form) }}
-    <div class="row">
-        <div class="row"> {{ form_row(form.title) }}</div>
-        <div class="row"> {{ form_row(form.description) }}</div>
-        <div class="row"> {{ form_row(form.startHour ,{value : dateNow|date("Y-m-d H:i:s")}) }}</div>
-        <div class="row"> {{ form_row(form.endHour) }}</div>
+        <div> {{ form_row(form.title) }}</div>
+        <div> {{ form_row(form.description) }}</div>
+        <div> {{ form_row(form.startHour ,{value : dateNow|date("Y-m-d H:i:s")}) }}</div>
+        <div> {{ form_row(form.endHour) }}</div>
         <ul id="email-fields-list"
             data-prototype="{{ form_widget(form.remainders.vars.prototype)|e }}"
             data-widget-tags="{{ '<li></li>'|e }}"
@@ -48,6 +45,7 @@
                 class="add-another-collection"
                 data-list-selector="user-fields-list">Add another user
         </button>
+        <br>
 
 
 
@@ -55,6 +53,4 @@
         <button class="btn">{{ button_label|default('Save') }}</button>
         {{ form_end(form) }}
     </div>
-</div>
-
 {% endblock %}

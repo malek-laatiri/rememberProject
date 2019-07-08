@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    {% block stylesheets %}
+
+        <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('fonts/font-awesome-5.9.0/css/all.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('vendor/animate/animate.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('vendor/select2/select2.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/util.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>{% endblock %}
+</head>
+<body>
+
+{% block body %}{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/jquery-3.4.0.min.js') }}"></script>
+
+    <script src="{{ asset('js/addTask.js') }}"></script>
+    <script src="{{ asset('js/addUser.js') }}"></script>
+    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover({html: true});
+        });
+        $('html').on('click', function (e) {
+            $('[data-toggle=popover]').each(function () {
+                // hide any open popovers when the anywhere else in the body is clicked
+                if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                    $(this).popover('hide');
+                }
+            });
+        });
+    </script>
+{% endblock %}
+</body>
+</html>

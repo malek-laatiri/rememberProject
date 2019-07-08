@@ -1,52 +1,83 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello Admin{% endblock %}
-
+{% extends 'BaseAdmin.html.twig' %}
 {% block body %}
-<div class="container">
-    <div class="row">
-    <div class="row">
-        <button class="btn" id="logout"><a href="{{ path('fos_user_security_logout') }}">{% trans %}logout{% endtrans %}</a></button>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
 
+</head>
+<body class="skin-blue">
+<div class="wrapper">
+
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Dashboard
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> <a
+                                href="{{ path('fos_user_security_logout') }}">{% trans %}Logout{% endtrans %}</a></a>
+                </li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Members</span>
+                            <span class="info-box-number">{{ users|length }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">{% trans %}Users{% endtrans %}</h3>
+
+                        </div>
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="table no-margin">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>{% trans %}Username{% endtrans %}</th>
+                                        <th>email</th>
+                                        <th>{% trans %}Delete{% endtrans %}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for user in users %}
+                                        <tr>
+                                            <th scope="row">{{ user.id }}</th>
+                                            <td>{{ user.username }}</td>
+                                            <td>{{ user.email }}</td>
+                                            <td>{{ include('user/_delete_form.html.twig') }}</td>
+                                        </tr>
+                                    {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+
+        </section>
     </div>
-        <div class="row">
-            <table>
-                <tr>
-                    <th><a href="{{ path('admin') }}">{% trans %}Users{% endtrans %}</a>
-                        &nbsp
-                        <a href="{{ path('admin_tasks') }}">{% trans %}Tasks{% endtrans %}</a></th>
-                </tr>
-
-            </table>
-        </div>
-
-    <div class="row">
-        <table class="table">
-
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">{% trans %}Username{% endtrans %}</th>
-                <th scope="col">email</th>
-                <th scope="col">{% trans %}Delete{% endtrans %}</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            {% for user in users %}
-                <tr>
-                    <th scope="row">{{ user.id }}</th>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ include('user/_delete_form.html.twig') }}</td>
-                </tr>
-            {% endfor %}
-
-            </tbody>
-        </table>
-    </div>
-</div>
-</div>
 
 
+</div><!-- ./wrapper -->
 {% endblock %}

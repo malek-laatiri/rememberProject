@@ -22,8 +22,9 @@ class TaskController extends AbstractController
      */
     public function newTask(Request $request): Response
     {
+        /** @var Task $task */
+
         $task = new Task();
-        $user = $this->getUser();
         $form = $this->createForm(TaskType::class, $task,['user'=>$this->getUser()]);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -58,7 +59,7 @@ class TaskController extends AbstractController
      */
     public function edit(Request $request, Task $task): Response
     {
-        $form = $this->createForm(TaskType::class, $task,['user'=>$this->getUser()]);
+        $form = $this->createForm(TaskType::class, $task);
 
         $form->handleRequest($request);
 

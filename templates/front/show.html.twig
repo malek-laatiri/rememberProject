@@ -1,78 +1,90 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Task{% endblock %}
+{% extends 'baseFront.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="row">
 
-                <h1>{% trans %}Task{% endtrans %}</h1>
+
+    {#start new template#}
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100 ver1 m-b-110">
+                    <table data-vertable="ver1">
+                        <thead>
+                        <tr class="row100 head">
+                            <th class="column100 column1" data-column="column1"></th>
+                            <th class="column100 column2" data-column="column2"></th>
+
+                        </thead>
+                        <tbody>
+                        <tr class="row100">
+                            <td class="column100 column1" data-column="column1">{% trans %}Title{% endtrans %}</td>
+                            <td class="column100 column2" data-column="column2">{{ task.title }}</td>
+
+                        </tr>
+
+                        <tr class="row100">
+                            <td class="column100 column1" data-column="column1">{% trans %}Description{% endtrans %}</td>
+                            <td class="column100 column2" data-column="column2">{{ task.description }}</td>
+
+                        </tr>
+
+                        <tr class="row100">
+                            <td class="column100 column1" data-column="column1">{% trans %}Start hour{% endtrans %}</td>
+                            <td class="column100 column2" data-column="column2">{{ task.starthour ? task.starthour|date('Y-m-d H:i:s') : '' }}</td>
+
+                        </tr>
+
+                        <tr class="row100">
+                            <td class="column100 column1" data-column="column1">{% trans %}End hour{% endtrans %}</td>
+                            <td class="column100 column2" data-column="column2">{{ task.endhour ? task.endhour|date('Y-m-d H:i:s') : '' }}</td>
+
+                        </tr>
+
+                        <tr class="row100">
+                            <td class="column100 column1" data-column="column1">{% trans %}Created at{% endtrans %}</td>
+                            <td class="column100 column2" data-column="column2">{{ task.createdat ? task.createdat|date('Y-m-d H:i:s') : '' }}</td>
+
+                        </tr>
+
+                        <tr class="row100">
+
+                                     <td class="column100 column1" data-column="column1">{% trans %}participants{% endtrans %}</td>
+                            <td class="column100 column2" data-column="column2"> {% for participant in task.userTasks %}
+                                    {% if participant.user %}
+
+                                        {{ participant.user.username }}<br>
+                                    {% endif %}
+
+                                {% endfor %}</td>
+
+                        </tr>
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+                    {% for i in selectprime %}
+
+                        {% if i.task.id == task.id and i.isCreator %}
+                                <button type="button" class="btn "><a href="{{ path('user_front_edit', {'id': task.id}) }}">{% trans %}edit{% endtrans %}</a></button>
+                            &nbsp
+                            <button id="l">{{ include('front/_delete_form.html.twig') }}</button>
+
+                        {% endif %}
+                    {% endfor %}
+
             </div>
-            <div class="row">
-
-                <table class="table">
-
-                    <tbody>
-
-                    <tr>
-                        <th>{% trans %}Title{% endtrans %}</th>
-                        <td>{{ task.title }}</td>
-                    </tr>
-                    <tr>
-                        <th>{% trans %}Description{% endtrans %}</th>
-                        <td>{{ task.description }}</td>
-                    </tr>
-
-                    <tr>
-                        <th>{% trans %}Start hour{% endtrans %}</th>
-                        <td>{{ task.starthour ? task.starthour|date('Y-m-d H:i:s') : '' }}</td>
-                    </tr>
-                    <tr>
-                        <th>{% trans %}End hour{% endtrans %}</th>
-                        <td>{{ task.endhour ? task.endhour|date('Y-m-d H:i:s') : '' }}</td>
-                    </tr>
-                    <tr>
-                        <th>{% trans %}Created at{% endtrans %}</th>
-                        <td>{{ task.createdat ? task.createdat|date('Y-m-d H:i:s') : '' }}</td>
-                    </tr>
-                    <tr>
-                        <th>{% trans %}participants{% endtrans %}</th>
-                        <td>
-
-                        {% for participant in task.userTasks %}
-                            {% if participant.user %}
-
-                            {{ participant.user.username }}<br>
-                            {% endif %}
-
-                        {% endfor %}
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <table>
-
-
-
-
-
-                {% for i in selectprime %}
-
-                {% if i.task.id == task.id and i.isCreator %}
-                <th>
-                    <button type="button" class="btn "><a href="{{ path('user_front_edit', {'id': task.id}) }}">{% trans %}edit{% endtrans %}</a></button>
-                </th>
-                    &nbsp
-                    <th id="l">{{ include('front/_delete_form.html.twig') }}</th>
-                    </td>
-
-                    </tr>
-                {% endif %}
-                {% endfor %}
-
-            </table>
         </div>
     </div>
+
+    {#end new template#}
+
+
+
+
+
+
+
 {% endblock %}

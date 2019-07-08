@@ -1,49 +1,51 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}"/>
-<link rel="stylesheet" href="{{ asset('fonts/font-awesome-5.9.0/css/all.css') }}"/>
-
-<link rel="stylesheet" href="{{ asset('vendor/animate/animate.css') }}"/>
-<link rel="stylesheet" href="{{ asset('vendor/select2/select2.min.css') }}"/>
-<link rel="stylesheet" href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}"/>
-<link rel="stylesheet" href="{{ asset('css/util.css') }}"/>
-<link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
-<link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
-
-
+{% extends 'baseFront.html.twig' %}
 {% block body %}
-
-
-
-    {#new template starts here#}
-    <div class="limiter">
+    {#start now#}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="btn" id="logout"><a
-                    href="{{ path('fos_user_security_logout') }}">{% trans %}logout{% endtrans %}</a>
+                    href="{{ path('fos_user_security_logout') }}">{% trans %}logout{% endtrans %}</a></button>
         </button>
-        <button class="btnlog" id="logout"><i class="fas fa-user"></i>&nbsp {{ app.user.username }}</button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btnlog" id="logout"><i class="fas fa-user"></i>&nbsp {{ app.user.username }}</button>
+
+            </form>
+        </div>
+    </nav>
+    {#end now#}
+    <div class="limiter">
+
         <div class="container-table100">
             <div class="wrap-table100">
                 <div class="table100 ver1 m-b-110">
-
-
                     <div id="calendar">
                         {% set PlusMonth = first_day|date_modify("+1 month")|date('U') %}
                         {% set LessMonth = first_day|date_modify("-1 month")|date('U') %}
                         {% set PlusYear = first_day|date_modify("+1 year")|date('U') %}
                         {% set LessYear = first_day|date_modify("-1 year")|date('U') %}
-                        <div><a href='{{ path('user_index') }}' title='today'>Today</a></div>
-                        <div><a href='{{ path('user_front_new') }}' title='add task '><i style="float: right"
-                                                                                         class="fas fa-plus-circle"></i>
-                            </a></div>
+                        <div>
+                            <a href='{{ path('user_index') }}' title='today'>Today</a></div>
+                        <div>
+                            <a href='{{ path('user_front_new') }}' title='add task '>
+                                <i style="float: right;font-size: 35px;" class="fas fa-plus-circle"></i>
+                            </a>
+                        </div>
 
 
                         <center style="margin-bottom: 30px;">
                             <table>
-                                <tr><a href="{{ path('scroll_calendar',{first_day: LessMonth}) }}" class="room-price"><i
-                                                class="fa fa-chevron-circle-left" aria-hidden="true"></i>
-                                    </a></tr>
+                                <tr>
+                                    <a href="{{ path('scroll_calendar',{first_day: LessMonth}) }}" class="room-price">
+                                        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                                    </a>
+                                </tr>
                                 <tr>{{ first_day|date('F') }}</tr>
-                                <tr><a href="{{ path('scroll_calendar',{first_day: PlusMonth}) }}" class="room-price"><i
-                                                class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                <tr><a href="{{ path('scroll_calendar',{first_day: PlusMonth}) }}" class="room-price">
+                                        <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
                                     </a>
                                 </tr>
                                 <tr>&nbsp;&nbsp;</tr>
@@ -74,59 +76,74 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {% set daysInMonth = first_day|date('t') %}
-                            {% set startDow = first_day|date('F 1\\s\\t Y')|date('w')-1 %}
-                            {% set dow = startDow %}
-                            {% for day in range(1,daysInMonth) %}
-                            {% if loop.first and startDow != 0 %}
-                            <td colspan="{{ startDow }}">
-                                {% endif %}
-                            <td class="column100 column{{ dow+2 }}" data-column="column{{ dow+2 }}">
-                                {% if ("now"|date("m")==first_day|date("m")) and ("now"|date("d")==day) and ("now"|date("y")==first_day|date("y")) %}
-                                {% set x =  "%02d"|format(day) %}
-                                {% set y = first_day|date("m") %}
-                                {% set z =  first_day|date("Y") %}
-                                <a role="button" class="btn popovers" data-toggle="popover" title=""
-                                   data-content="ajouter <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='add tasks'>tache</a><br>voir <a href='{{ path('show_tasks_selected_day',{day:x ,month:y,year:z}) }}' title='all tasks'>les taches</a>"
-                                   data-original-title="test title">
-                                    <div style="color: white;" class="dot">{{ day }}</div>
-                                </a>
+                            <tr class="row100">
 
-                                {% else %}
-                                {% set x =  "%02d"|format(day) %}
-                                {% set y = first_day|date("m") %}
-                                {% set z =  first_day|date("Y") %}
-
-                                <a role="button" class="btn popovers" data-toggle="popover" title=""
-                                   data-content="ajouter <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='add task'>tache</a><br> voir <a href='{{ path('show_tasks_selected_day',{day:x ,month:y,year:z}) }}' title='all tasks'>les taches</a>"
-                                   data-originasl-title="test title">
-                                    {{ day }}</a>
-                                {% endif %}
-
-                                {% set dateNow =  y  ~'/'~ x  ~'/'~  z %}
-                                <div>
-                                    {% for i in selectprime %}
-                                        {% if i.task.starthour|date("Y-m-d") == dateNow|date("Y-m-d") %}
-                                            <a style="color:black"
-                                               href="{{ path('user_front_show', {'id': i.task.id}) }}">{{ i.task.title }} {{ i.task.startHour|date('H:i') }}</a>
-                                            <br>
-
-                                        {% endif %}
-
-                                    {% endfor %}
-                                    {% for y in adminTasks %}
-                                    {% if y.task.startHour|date("Y-m-d") == dateNow|date("Y-m-d") %}
-                                        <a class="admin"
-                                           href="{{ path('user_front_show', {'id': y.task.id}) }}">{{ y.task.title }} </a>
-                                        <br>
+                                {% set daysInMonth = first_day|date('t') %}
+                                {% set startDow = first_day|date('F 1\\s\\t Y')|date('w')-1 %}
+                                {% set dow = startDow %}
+                                {% for day in range(1,daysInMonth) %}
+                                {% if loop.first and startDow != 0 %}
+                                <td colspan="{{ startDow }}">
                                     {% endif %}
-                                {% endfor %}</td>
 
-                            {% if loop.last and dow != 6 %}
-                                <td class="row100" colspan="{{ 6 - dow }}">&nbsp;</td>
-                            {% endif %}
-                            {% if dow == 6 %}
-                            {% set dow = 0 %}
+                                <td class="column100 column{{ dow+2 }}" data-column="column{{ dow+2 }}" id="shows">
+
+                                    {% if ("now"|date("m")==first_day|date("m")) and ("now"|date("d")==day) and ("now"|date("y")==first_day|date("y")) %}
+                                    {% set x =  "%02d"|format(day) %}
+                                    {% set y = first_day|date("m") %}
+                                    {% set z =  first_day|date("Y") %}
+
+                                    <a role="button" class="btn popovers" data-toggle="popover" title=""
+                                       data-content="ajouter <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='add tasks'>tache</a><br>voir <a href='{{ path('show_tasks_selected_day',{day:x ,month:y,year:z}) }}' title='all tasks'>les taches</a>"
+                                       data-original-title="test title">
+                                        <div style="color: white;" class="dot">{{ day }}</div>
+                                    </a>
+                                    {% elseif  ("now"|date("d") > day) and ("now"|date("m") >= first_day|date("m"))  and ("now"|date("y") >= first_day|date("y")) %}
+
+                                    {% set x =  "%02d"|format(day) %}
+                                    {% set y = first_day|date("m") %}
+                                    {% set z =  first_day|date("Y") %}
+
+                                    <a role="button" class="btn popovers" data-toggle="popover" title=""
+                                       data-content=" voir <a href='{{ path('show_tasks_selected_day',{day:x ,month:y,year:z}) }}' title='all tasks'>les taches</a>"
+                                       data-originasl-title="test title">
+                                        {{ day }}</a>
+                                    {% else %}
+                                    {% set x =  "%02d"|format(day) %}
+                                    {% set y = first_day|date("m") %}
+                                    {% set z =  first_day|date("Y") %}
+
+                                    <a role="button" class="btn popovers" data-toggle="popover" title=""
+                                       data-content="ajouter <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='add task'>tache</a><br> voir <a href='{{ path('show_tasks_selected_day',{day:x ,month:y,year:z}) }}' title='all tasks'>les taches</a>"
+                                       data-originasl-title="test title">
+                                        {{ day }}</a>
+                                    {% endif %}
+
+
+                                    {% set dateNow =  y  ~'/'~ x  ~'/'~  z %}
+                                    <div>
+                                        {% for i in selectprime %}
+                                            {% if i.task.starthour|date("Y-m-d") == dateNow|date("Y-m-d") %}
+                                                <a style="color:black"
+                                                   href="{{ path('user_front_show', {'id': i.task.id}) }}">{{ i.task.title }} {{ i.task.startHour|date('H:i') }}</a>
+                                                <br>
+
+                                            {% endif %}
+
+                                        {% endfor %}
+                                        {% for y in adminTasks %}
+                                        {% if y.task.startHour|date("Y-m-d") == dateNow|date("Y-m-d") %}
+                                            <a class="admin"
+                                               href="{{ path('user_front_show', {'id': y.task.id}) }}">{{ y.task.title }} </a>
+                                            <br>
+                                        {% endif %}
+                                    {% endfor %}</td>
+
+                                {% if loop.last and dow != 6 %}
+                                    <td  colspan="{{ 6 - dow }}">&nbsp;</td>
+                                {% endif %}
+                                {% if dow == 6 %}
+                                {% set dow = 0 %}
                             </tr>
                             <tr class="row100">
                                 {% else %}
@@ -135,34 +152,15 @@
                                 {% endif %}
                                 {% endfor %}
                             </tr>
-
                             </tbody>
                         </table>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-    {# end template#}
-
-
-
-
-
-
-
-
 {% endblock %}
 {% block javascripts %}
-    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -172,6 +170,14 @@
     <script>
         $(document).ready(function () {
             $('[data-toggle="popover"]').popover({html: true});
+        });
+        $('html').on('click', function (e) {
+            $('[data-toggle=popover]').each(function () {
+                // hide any open popovers when the anywhere else in the body is clicked
+                if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                    $(this).popover('hide');
+                }
+            });
         });
     </script>
 {% endblock %}

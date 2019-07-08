@@ -1,82 +1,113 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello Admin{% endblock %}
+{% extends 'BaseAdmin.html.twig' %}
 
 {% block body %}
 
-
-<div class="container">
-    <div class="row">
-
-        <div class="row">
-            <button class="btn" id="logout"><a href="{{ path('fos_user_security_logout') }}">{% trans %}Logout{% endtrans %}</a></button>
-        </div>
-        <div class="row">
-            <table>
-                <tr>
-                    <th><a href="{{ path('admin') }}">{% trans %}Users{% endtrans %}</a>
-                        &nbsp
-                        <a href="{{ path('admin_tasks') }}">{% trans %}Tasks{% endtrans %}</a></th>
-
-                </tr>
-
-            </table>
-            <button type="button" class="btn " id="logout" ><a href="{{ path('admin_task_new') }}">{% trans %}New{% endtrans %}</a></button>
-        </div>
-
-        <div class="row">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">{% trans %} Title {% endtrans %}</th>
-                    <th scope="col">{% trans %}Description{% endtrans %}</th>
-                    <th scope="col">{% trans %}Start hour{% endtrans %}</th>
-                    <th scope="col">{% trans %}End hour{% endtrans %}</th>
-                    <th scope="col">{% trans %}Created at{% endtrans %}</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col">action</th>
-
-                    <th scope="col"></th>
-
-                </tr>
-                </thead>
-                <tbody>
+    <body class="skin-blue">
+    <div class="wrapper">
 
 
-                {% for i in tasks %}
-
-                    <tr>
-                        <th scope="row">{{ i.task.id }}</th>
-                        <td>{{ i.task.title }}</td>
-                        <td>{{ i.task.description }}</td>
-                        <td>{{ i.task.starthour|date('Y-m-d H:i:s') }}</td>
-                        <td>{{ i.task.endhour|date('Y-m-d H:i:s') }}</td>
-                        <td>{{ i.task.createdat|date('Y-m-d') }}</td>
-                        <td>
-                        <th>
-                            <button type="button" class="btn "><a
-                                        href="{{ path('admin_task_show', {'id': i.task.id}) }}">{% trans %}Show{% endtrans %}</a></button>
-                        </th>
-                        <th>
-                            <button type="button" class="btn "><a
-                                        href="{{ path('admin_task_edit', {'id': i.task.id}) }}">{% trans %}Edit{% endtrans %}</a></button>
-                        </th>
-                        {% set idt = i.task.id %}
-
-                        <th id="l">{{ include('task/_delete_form.html.twig') }}</th>
-                        </td>
-
-                    </tr>
 
 
-                {% endfor %}
+        <!-- Right side column. Contains the navbar and content of the page -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Dashboard
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> <a
+                                    href="{{ path('fos_user_security_logout') }}">{% trans %}Logout{% endtrans %}</a></a>
+                    </li>
+                </ol>
+            </section>
 
-                </tbody>
-            </table>
+            <!-- Main content -->
+            <section class="content">
+                <!-- Info boxes -->
+                <div class="row">
 
-        </div>
-    </div>
-</div>
-    {% endblock %}
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-red"><i class="fas fa-tasks"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">{% trans %}Tasks{% endtrans %}</span>
+                                <span class="info-box-number">{{ tasks|length }}</span>
+                            </div><!-- /.info-box-content -->
+                        </div><!-- /.info-box -->
+                    </div><!-- /.col -->
+
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <!-- TABLE: LATEST ORDERS -->
+                            <div class="box box-info" style="    width: 1200px;
+">
+
+                                <div class="box-body">
+                                    <div>
+                                        <a href='{{ path('admin_task_new') }}' title='add task '>
+                                            <i style="float: right" class="fas fa-plus-circle"></i>
+                                        </a>
+                                        <table class="table no-margin">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>{% trans %} Title {% endtrans %}</th>
+                                                <th>{% trans %}Description{% endtrans %}</th>
+                                                <th>{% trans %}Start hour{% endtrans %}</th>
+                                                <th>{% trans %}End hour{% endtrans %}</th>
+                                                <th>{% trans %}Created at{% endtrans %}</th>
+                                                <th></th>
+                                                <th></th>
+
+                                                <th>action</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for i in tasks %}
+                                                <tr>
+                                                    <th scope="row">{{ i.task.id }}</th>
+                                                    <td>{{ i.task.title }}</td>
+                                                    <td>{{ i.task.description }}</td>
+                                                    <td>{{ i.task.starthour|date('Y-m-d H:i:s') }}</td>
+                                                    <td>{{ i.task.endhour|date('Y-m-d H:i:s') }}</td>
+                                                    <td>{{ i.task.createdat|date('Y-m-d') }}</td>
+                                                    <td>
+                                                    <th>
+                                                        <button type="button" class="btn "><a
+                                                                    href="{{ path('admin_task_show', {'id': i.task.id}) }}">{% trans %}Show{% endtrans %}</a>
+                                                        </button>
+                                                    </th>
+                                                    <th>
+                                                        <button type="button" class="btn "><a
+                                                                    href="{{ path('admin_task_edit', {'id': i.task.id}) }}">{% trans %}Edit{% endtrans %}</a>
+                                                        </button>
+                                                    </th>
+                                                    {% set idt = i.task.id %}
+
+                                                    <th id="l">{{ include('task/_delete_form.html.twig') }}</th>
+                                                    </td>
+
+                                                </tr>
+                                            {% endfor %}
+
+
+                                            </tbody>
+                                        </table>
+                                    </div><!-- /.table-responsive -->
+                                </div><!-- /.box-body -->
+
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->
+
+                    </div><!-- /.row -->
+
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+
+
+    </div><!-- ./wrapper -->
+
+{% endblock %}

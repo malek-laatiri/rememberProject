@@ -1,10 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseFront.html.twig' %}
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block title %}New Task{% endblock %}
 
 {% block body %}
-    <h1>{% trans %}Create new Task{% endtrans %}</h1>
 
     {{ include('front/_form.html.twig') }}
 
