@@ -1,20 +1,0 @@
-
-cjavascript:S2259Ì"FTypeError can be thrown as "callback" might be null or undefined here.(Ì€—Ä
-cjavascript:S2259Š2"FTypeError can be thrown as "instance" might be null or undefined here.(úõ«ü
-njavascript:S2589«"LRefactor this code so that this expression does not always evaluate to true.(ƒ®Û½þÿÿÿÿ
-ijavascript:S2589Š"LRefactor this code so that this expression does not always evaluate to true.(¿ÚØÕ
-javascript:S2692˜%"bThis check ignores index 0; consider using 'includes' method to make this check safe and explicit.(ù›ÓÂ
-^javascript:S2814,"CRename "S2" as this name is already used in declaration at line 42.(ÿöš
-cjavascript:UnusedVariableó"8Remove the declaration of the unused 'matches' variable.(Öçé‡ûÿÿÿÿ
-djavascript:UnusedVariableø1"9Remove the declaration of the unused 'instance' variable.(ÕºƒËýÿÿÿÿ
-`javascript:UnusedVariable "5Remove the declaration of the unused 'self' variable.(‚Ì¡‘üÿÿÿÿ
-]javascript:UnusedVariableÚ"7Remove the declaration of the unused '$label' variable.(º²ð™
-^javascript:UnusedVariableÔ
-"3Remove the declaration of the unused 'id' variable.(¯üÞÁúÿÿÿÿ
-_javascript:UnusedVariable¨"4Remove the declaration of the unused 'tag' variable.(ªÖØÃþÿÿÿÿ
-Vjavascript:S1854Ú"9Remove this useless assignment to local variable "$label"(º²ð™
-Wjavascript:S1854Ô
-"5Remove this useless assignment to local variable "id"(¯üÞÁúÿÿÿÿ
-Yjavascript:S1854 "7Remove this useless assignment to local variable "self"(‚Ì¡‘üÿÿÿÿ
-Xjavascript:S1854¨"6Remove this useless assignment to local variable "tag"(ªÖØÃþÿÿÿÿ
-]javascript:S1854ø1";Remove this useless assignment to local variable "instance"(ÕºƒËýÿÿÿÿ
