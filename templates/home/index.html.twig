@@ -1,5 +1,7 @@
 {% extends 'baseFront.html.twig' %}
 {% block body %}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+
     {#start now#}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="btn" id="logout"><a
@@ -11,7 +13,7 @@
 
                 </ul>
             <form class="form-inline my-2 my-lg-0">
-                <button class="btnlog" id="logout"><i class="fas fa-user"></i>&nbsp {{ app.user.username }}</button>
+                <button class="btnlog" id="logout" disabled><i class="fas fa-user"></i>&nbsp {{ app.user.username }}</button>
 
             </form>
         </div>
@@ -95,7 +97,7 @@
 
                                     <a role="button" class="btn popovers" data-toggle="popover" title=""
                                        data-content="ajouter <a href='{{ path('user_new_selected_day',{day:x ,month:y,year:z}) }}' title='add tasks'>tache</a><br>voir <a href='{{ path('show_tasks_selected_day',{day:x ,month:y,year:z}) }}' title='all tasks'>les taches</a>"
-                                       data-original-title="test title">
+                                      >
                                         <div style="color: white;" class="dot">{{ day }}</div>
                                     </a>
                                     {% elseif  ("now"|date("d") > day) and ("now"|date("m") >= first_day|date("m"))  and ("now"|date("y") >= first_day|date("y")) %}
@@ -164,6 +166,7 @@
     <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 
 
 

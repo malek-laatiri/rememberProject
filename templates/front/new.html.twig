@@ -1,7 +1,5 @@
-{% extends 'baseFront.html.twig' %}
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
-{% block title %}New Task{% endblock %}
 
 {% block body %}
 
@@ -9,11 +7,11 @@
 
 {% endblock %}
 {% block javascripts %}
+
     <script>
-        $(document).ready(function () {
-            $('.js-datepicker').datepicker({
-                format: 'yyyy-mm-dd'
-            });
+
+        jQuery(document).ready(function() {
+            $('.js-datepicker').datetimepicker();
         });
     </script>
 {% endblock %}

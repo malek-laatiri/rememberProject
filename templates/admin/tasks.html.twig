@@ -17,7 +17,7 @@
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> <a
-                                    href="{{ path('fos_user_security_logout') }}">{% trans %}Logout{% endtrans %}</a></a>
+                                    href="{{ path('fos_user_security_logout') }}" style="font-size: 18px">{% trans %}Logout{% endtrans %}</a></a>
                     </li>
                 </ol>
             </section>
@@ -31,18 +31,18 @@
                         <div class="info-box">
                             <span class="info-box-icon bg-red"><i class="fas fa-tasks"></i></span>
                             <div class="info-box-content">
-                                <span class="info-box-text">{% trans %}Tasks{% endtrans %}</span>
+                                <span class="info-box-text" style="    margin-top: 15px;
+">{% trans %}Tasks{% endtrans %}</span>
                                 <span class="info-box-number">{{ tasks|length }}</span>
                             </div><!-- /.info-box-content -->
                         </div><!-- /.info-box -->
                     </div><!-- /.col -->
 
-
+                </div>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <!-- TABLE: LATEST ORDERS -->
-                            <div class="box box-info" style="    width: 1200px;
-">
+                            <div class="box box-info" style=" width: 1600px;">
 
                                 <div class="box-body">
                                     <div>
@@ -77,12 +77,12 @@
                                                     <td>
                                                     <th>
                                                         <button type="button" class="btn "><a
-                                                                    href="{{ path('admin_task_show', {'id': i.task.id}) }}">{% trans %}Show{% endtrans %}</a>
+                                                                    href="{{ path('admin_task_show', {'id': i.task.id}) }}"><i class="fas fa-eye"></i></a>
                                                         </button>
                                                     </th>
                                                     <th>
                                                         <button type="button" class="btn "><a
-                                                                    href="{{ path('admin_task_edit', {'id': i.task.id}) }}">{% trans %}Edit{% endtrans %}</a>
+                                                                    href="{{ path('admin_task_edit', {'id': i.task.id}) }}"><i class="fas fa-edit"></i></a>
                                                         </button>
                                                     </th>
                                                     {% set idt = i.task.id %}

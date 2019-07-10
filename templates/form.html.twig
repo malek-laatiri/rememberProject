@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('fonts/font-awesome-5.9.0/css/all.css') }}"/>
+        <link rel="stylesheet" type="text/css"
+              href="{{ asset('form/fonts/iconic/css/material-design-iconic-font.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/animate/animate.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/css-hamburgers/hamburgers.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/animsition/css/animsition.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/select2/select2.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/noui/nouislider.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('form/css/util.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('form/css/main.css') }}">
+        <style>
+            body {
+                background-color: #f8f9fa;
+            }
+        </style>
+    {% endblock %}
+</head>
+<body>
+
+
+{% block body %}{% endblock %}
+
+
+
+
+
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery-3.4.0.min.js') }}"></script>
+
+    <script src="{{ asset('js/addTask.js') }}"></script>
+    <script src="{{ asset('js/addUser.js') }}"></script>
+    <script src="{{ asset('js/moment.js') }}"></script>
+    <script src="{{ asset('form/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+
+
+    <script src="{{ asset('form/vendor/animsition/js/animsition.min.js') }}"></script>
+    <script src="{{ asset('form/vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('form/vendor/select2/select2.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script>
+        $(".js-select2").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+
+
+            $(".js-select2").each(function () {
+                $(this).on('select2:close', function (e) {
+                    if ($(this).val() == "Please chooses") {
+                        $('.js-show-service').slideUp();
+                    } else {
+                        $('.js-show-service').slideUp();
+                        $('.js-show-service').slideDown();
+                    }
+                });
+            });
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('form/js/main.js') }}"></script>
+    <script src="{{ asset('form/vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('form/vendor/countdowntime/countdowntime.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('form/vendor/noui/nouislider.min.js') }}"></script>
+    <script>
+        var filterBar = document.getElementById('filter-bar');
+
+        noUiSlider.create(filterBar, {
+            start: [1500, 3900],
+            connect: true,
+            range: {
+                'min': 1500,
+                'max': 7500
+            }
+        });
+
+        var skipValues = [
+            document.getElementById('value-lower'),
+            document.getElementById('value-upper')
+        ];
+
+        filterBar.noUiSlider.on('update', function (values, handle) {
+            skipValues[handle].innerHTML = Math.round(values[handle]);
+            $('.contact100-form-range-value input[name="from-value"]').val($('#value-lower').html());
+            $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
+        });
+    </script>
+    <script src="{{ asset('form/js/main.js') }}"></script>
+{% endblock %}
+</body>
+</html>

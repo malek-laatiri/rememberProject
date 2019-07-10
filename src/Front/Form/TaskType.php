@@ -6,6 +6,7 @@ use App\Common\Entity\Task;
 use App\Common\Entity\UserTask;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -21,9 +22,14 @@ class TaskType extends AbstractType
 
         $builder
             ->add('title', TextType::class)
-            ->add('description', TextType::class)
-            ->add('startHour', DateTimeType::class)
-            ->add('endHour', DateTimeType::class)
+            ->add('description', TextAreaType::class)
+            ->add('startHour', DateTimeType::class, [
+                'widget' => 'single_text',
+                'attr' => ['class' => 'js-datepicker'],
+            ])
+            ->add('endHour', DateTimeType::class, [
+                'widget' => 'single_text',
+            ])
             ->add('remainders', CollectionType::class, [
                 'entry_type' => RemainderType::class,
                 'allow_add' => true,
@@ -48,7 +54,6 @@ class TaskType extends AbstractType
                     ->setTask($task)
                     ->setIsApproved(true)
                     ->setUser($currentUser=$form->getConfig()->getOption('user'));
-
 
                 $task->addUserTask($userTask);
 

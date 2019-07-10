@@ -1,55 +1,57 @@
-{% extends 'baseFront.html.twig' %}
-    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% extends 'form.html.twig' %}
 
 {% block body %}
+    <a href="{{ path('user_index') }}" class="float-left"> <i style="font-size: 30px;margin-left: 50px;margin-top: 50px;" class="fas fa-arrow-left"></i> </a>
+
+    <div class="container-contact100">
+
+        <div class="wrap-contact100">
+            {{ form_start(form, {attr: {class: 'contact100-form validate-form'} }) }}
+            <div> {{ form_row(form.title, {attr: {class: 'wrap-input100 validate-input bg1'} }) }}</div>
+            <div> {{ form_row(form.description, {attr: {class: 'wrap-input100 validate-input bg1'} }) }}</div>
+            <div> {{ form_row(form.startHour, {attr: {class: 'input100 js-datepicker'} }) }}</div>
+            <div>{{ form_row(form.endHour, {attr: {class: 'input100 js-datepicker'} }) }}</div>
+            <div class="wrap-input100 input100-select bg1">
+
+                <ul id="email-fields-list"
+                    data-prototype="{{ form_widget(form.remainders.vars.prototype, {attr: {class: 'wrap-input100 input100-select bg1'} })|e }}"
+                    data-widget-tags="{{ '<li></li>'|e }}"
+                    data-widget-counter="{{ form.children|length }}">
+                    {% for emailField in form.remainders %}
+                        <li>
+                            {{ form_errors(emailField) }}
+                            {{ form_widget(emailField, {attr: {class: 'wrap-input100 input100-select bg1'} }) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <button type="button"
+                        class="add-another-collection-widget btn btn-outline-dark "
+                        data-list-selector="#email-fields-list">Add another date
+                </button>
+            </div>
+            <div class="wrap-input100 input100-select bg1">
 
 
-
-    <div class="d-flex justify-content-center" style="margin-top: 50px;">
-
-        {{ form_start(form) }}
-        <div> {{ form_row(form.title) }}</div>
-        <div> {{ form_row(form.description) }}</div>
-        <div> {{ form_row(form.startHour) }}</div>
-        <div> {{ form_row(form.endHour) }}</div>
-        <ul id="email-fields-list"
-            data-prototype="{{ form_widget(form.remainders.vars.prototype)|e }}"
-            data-widget-tags="{{ '<li></li>'|e }}"
-            data-widget-counter="{{ form.children|length }}">
-            {% for emailField in form.remainders %}
-                <li>
-                    {{ form_errors(emailField) }}
-                    {{ form_widget(emailField) }}
-                </li>
-            {% endfor %}
-        </ul>
-        <button type="button"
-                class="add-another-collection-widget"
-                data-list-selector="#email-fields-list">Add another date
-        </button>
+                <ul id="user-fields-list"
+                    data-prototype="{{ form_widget(form.userTasks.vars.prototype, {attr: {class: 'wrap-input100 input100-select bg1'} })|e }}"
+                    data-widget-tags="{{ '<li></li>'|e }}"
+                    data-widget-counter="{{ form.children|length }}">
+                    {% for emailField in form.userTasks %}
+                        <li>
+                            {{ form_errors(emailField) }}
+                            {{ form_widget(emailField, {attr: {class: 'wrap-input100 input100-select bg1'} }) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <button type="button"
+                        class="add-another-collection btn btn-outline-dark "
+                        data-list-selector="user-fields-list">Add another user
+                </button>
+            </div>
 
 
-        <ul id="user-fields-list"
-            data-prototype="{{ form_widget(form.userTasks.vars.prototype)|e }}"
-            data-widget-tags="{{ '<li></li>'|e }}"
-            data-widget-counter="{{ form.children|length }}">
-            {% for emailField in form.userTasks %}
-                <li>
-                    {{ form_errors(emailField) }}
-                    {{ form_widget(emailField) }}
-                </li>
-            {% endfor %}
-        </ul>
-        <button type="button"
-                class="add-another-collection"
-                data-list-selector="user-fields-list">Add another user
-        </button>
-        <br>
-
-
-
-
-        <button class="btn">{{ button_label|default('Save') }}</button>
-        {{ form_end(form) }}
+            <button class="contact100-form-btn">{{ button_label|default('Save') }}</button>
+        </div>
     </div>
+    {{ form_end(form) }}
 {% endblock %}

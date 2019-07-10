@@ -1,12 +1,15 @@
 {% extends 'baseFront.html.twig' %}
 
 {% block body %}
-
+    <link rel="stylesheet" href="{{ asset('css/show.css') }}"/>
 
     {#start new template#}
     <div class="limiter">
+        <a href="{{ path('user_index') }}">   <i style="font-size: 30px;margin-left: 50px;margin-top: 50px;" class="fas fa-arrow-left"></i> </a>
+
         <div class="container-table100">
             <div class="wrap-table100">
+<br>
                 <div class="table100 ver1 m-b-110">
                     <table data-vertable="ver1">
                         <thead>
@@ -77,6 +80,7 @@
 
             </div>
         </div>
+
     </div>
 
     {#end new template#}
