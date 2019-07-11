@@ -30,7 +30,10 @@ class HomeController extends AbstractController
 
             'first_day' => $first_day,
             'selectprime' => $UserTaskRepository->findBy(['user' => $connectedUser]),
-            'adminTasks' => $UserTaskRepository->findBy(['user' => $adminTasks])
+            'adminTasks' => $UserTaskRepository->findBy(['user' => $adminTasks]),
+            'notApproved' => $UserTaskRepository->findBy(['user' => $connectedUser,'isApproved' => false]),
+
+
 
 
         ]);
@@ -54,7 +57,9 @@ class HomeController extends AbstractController
             'first_day' => $firstDay,
             'select' => $task->findAll(),
             'selectprime' => $UserTaskRepository->findBy(['user' => $connectedUser]),
-            'adminTasks' => $userRepository->findBy(['roles' => $role])
+            'adminTasks' => $userRepository->findBy(['roles' => $role]),
+            'notApproved' => $UserTaskRepository->findBy(['user' => $connectedUser,'isApproved' => false]),
+
 
 
         ]);

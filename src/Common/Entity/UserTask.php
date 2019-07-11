@@ -95,6 +95,7 @@ class UserTask
     public function __construct()
     {
         $this->setIsCreator(false);
+        $this->setIsApproved(true);
 
     }
 

@@ -28,3 +28,6 @@ user_front_delete:
 show_tasks_selected_day:
   path: /task/{day}/{month}/{year}
   controller: App\Front\Controller\TaskController::taskByDay
+change_approve:
+  path: /approve/edit/{id}/{usertask}
+  controller: App\Front\Controller\TaskController::changeApprove

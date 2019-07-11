@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Front\Controller;
-
+use DateTime;
 use App\Common\Entity\Task;
 use App\Front\Form\TaskType;
+use App\Service\EmailGenerator;
 use App\Common\Repository\UserTaskRepository;
-use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
@@ -19,18 +21,25 @@ class TaskController extends AbstractController
 {
     /**
      * @param Request $request
+     * @param EmailGenerator $message
      * @return Response
      */
-    public function newTaskFront(Request $request): Response
+    public function newTaskFront(Request $request, EmailGenerator $message): Response
     {
         $task = new Task();
-        $form = $this->createForm(TaskType::class, $task,['user'=>$this->getUser()]);
+        $form = $this->createForm(TaskType::class, $task, ['user' => $this->getUser()]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($task);
             $entityManager->flush();
+
+            foreach ($task->getUserTasks()->getValues() as $value) {
+                $message->sendEmail('test sujet', $this->render('emails/NewTask.html.twig', ['task' => $task, 'usertask' => $value]), $value->getUser()->getEmail());
+
+            }
+
             return $this->redirectToRoute('user_index');
         }
 
@@ -41,15 +50,58 @@ class TaskController extends AbstractController
     }
 
     /**
+     * @param Request $request
+     * @param Task $task
+     * @param $usertask
+     * @param UserTaskRepository $UserTaskRepository
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function changeApprove(Request $request, Task $task, $usertask, UserTaskRepository $UserTaskRepository)
+    {
+        $form1 = $this->createFormBuilder()
+            ->add('isApproved', ChoiceType::class, [
+                'choices' => [
+                    'Maybe' => null,
+                    'Yes' => true,
+                    'No' => false,
+                ],
+            ])
+            ->add('send', SubmitType::class)
+            ->getForm();
+
+        $form1->handleRequest($request);
+
+        if ($form1->isSubmitted() && $form1->isValid()) {
+            dump($usertask);
+            $x = $UserTaskRepository->find($usertask);
+            $x->setIsApproved($form1['isApproved']->getData());
+            dump($task);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($x);
+            $entityManager->flush();
+            return $this->redirectToRoute('user_index');
+
+        }
+        return $this->render('emails/approve.html.twig', [
+            'form1' => $form1->createView(),
+            'task' => $task,
+
+        ]);
+
+    }
+
+
+    /**
      * @param $day
      * @param $month
      * @param $year
      * @param Request $request
+     * @param EmailGenerator $message
      * @return Response
      * @throws \Exception
      */
 
-    public function newTaskByDay($day, $month, $year, Request $request): Response
+    public function newTaskByDay($day, $month, $year, Request $request, EmailGenerator $message): Response
     {
 
         $dateTime = new DateTime($year . '-' . $month . '-' . $day);
@@ -58,13 +110,18 @@ class TaskController extends AbstractController
         $task->setStarthour($dateTime);
         $task->setEndhour($dateTime);
 
-        $form = $this->createForm(TaskType::class, $task,['user'=>$this->getUser()]);
+        $form = $this->createForm(TaskType::class, $task, ['user' => $this->getUser()]);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($task);
             $entityManager->flush();
+            foreach ($task->getUserTasks()->getValues() as $value) {
+                $message->sendEmail('test sujet', $this->render('emails/NewTask.html.twig', ['task' => $task, 'usertask' => $value]), $value->getUser()->getEmail());
+
+            }
+
             return $this->redirectToRoute('user_index');
         }
         return $this->render('home/day.html.twig', [

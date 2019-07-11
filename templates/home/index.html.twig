@@ -5,7 +5,7 @@
     {#start now#}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="btn" id="logout"><a
-                    href="{{ path('fos_user_security_logout') }}">{% trans %}logout{% endtrans %}</a></button>
+                    href="{{ path('fos_user_security_logout') }}">{% trans %}Logout{% endtrans %}</a></button>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -139,6 +139,15 @@
                                                href="{{ path('user_front_show', {'id': y.task.id}) }}">{{ y.task.title }} </a>
                                             <br>
                                         {% endif %}
+
+                                    {% endfor %}
+                                        {% for y in notApproved %}
+                                        {% if y.task.startHour|date("Y-m-d") == dateNow|date("Y-m-d") %}
+                                            <a class="admin" style="color: blue"
+                                               href="{{ path('user_front_show', {'id': y.task.id}) }}">{{ y.task.title }} </a>
+                                            <br>
+                                        {% endif %}
+
                                     {% endfor %}</td>
 
                                 {% if loop.last and dow != 6 %}

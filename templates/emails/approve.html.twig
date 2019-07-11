@@ -1,0 +1,90 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('css/show.css') }}"/>
+
+    {#start new template#}
+    <div class="limiter">
+        <a href="{{ path('user_index') }}">   <i style="font-size: 30px;margin-left: 50px;margin-top: 50px;" class="fas fa-arrow-left"></i> </a>
+
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <br>
+                <div class="table100 ver1 m-b-110">
+                    <table data-vertable="ver1">
+                        <thead>
+                        <tr class="row100 head">
+                            <th class="column100 column1" data-column="column1"></th>
+                            <th class="column100 column2" data-column="column2"></th>
+
+                        </thead>
+                        <tbody>
+                        <tr class="row100">
+                            <td class="column100 column1" data-column="column1">{% trans %}Title{% endtrans %}</td>
+                            <td class="column100 column2" data-column="column2">{{ task.title }}</td>
+
+                        </tr>
+
+                        <tr class="row100">
+                            <td class="column100 column1" data-column="column1">{% trans %}Description{% endtrans %}</td>
+                            <td class="column100 column2" data-column="column2">{{ task.description }}</td>
+
+                        </tr>
+
+                        <tr class="row100">
+                            <td class="column100 column1" data-column="column1">{% trans %}Start hour{% endtrans %}</td>
+                            <td class="column100 column2" data-column="column2">{{ task.starthour ? task.starthour|date('Y-m-d H:i:s') : '' }}</td>
+
+                        </tr>
+
+                        <tr class="row100">
+                            <td class="column100 column1" data-column="column1">{% trans %}End hour{% endtrans %}</td>
+                            <td class="column100 column2" data-column="column2">{{ task.endhour ? task.endhour|date('Y-m-d H:i:s') : '' }}</td>
+
+                        </tr>
+
+                        <tr class="row100">
+                            <td class="column100 column1" data-column="column1">{% trans %}Created at{% endtrans %}</td>
+                            <td class="column100 column2" data-column="column2">{{ task.createdat ? task.createdat|date('Y-m-d H:i:s') : '' }}</td>
+
+                        </tr>
+
+                        <tr class="row100">
+
+                            <td class="column100 column1" data-column="column1">{% trans %}participants{% endtrans %}</td>
+                            <td class="column100 column2" data-column="column2"> {% for participant in task.userTasks %}
+                                    {% if participant.user %}
+
+                                        {{ participant.user.username }}<br>
+                                    {% endif %}
+
+                                {% endfor %}</td>
+
+                        </tr>
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    {{ form_start(form1) }}
+    <div class="row">{{ form_row(form1.isApproved) }}</div>
+
+    {{ form_end(form1) }}
+
+
+    {#end new template#}
+
+
+
+
+
+
+
+{% endblock %}

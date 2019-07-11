@@ -4,15 +4,16 @@ namespace App\Front\Form;
 
 use App\Common\Entity\Task;
 use App\Common\Entity\UserTask;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+
 
 
 class TaskType extends AbstractType
@@ -23,13 +24,16 @@ class TaskType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('description', TextAreaType::class)
-            ->add('startHour', DateTimeType::class, [
-                'widget' => 'single_text',
-                'attr' => ['class' => 'js-datepicker'],
-            ])
-            ->add('endHour', DateTimeType::class, [
-                'widget' => 'single_text',
-            ])
+            ->add('startHour', DateTimeType::class,[
+                'widget' => 'choice',
+                'years'=>range(date('y'),date('y')+50),
+                'months'=>range(date('m'),12),
+                'days'=>range(date('d'),31)])
+            ->add('endHour', DateTimeType::class,[
+                'widget' => 'choice',
+                'years'=>range(date('y'),date('y')+50),
+                'months'=>range(date('m'),12),
+                'days'=>range(date('d'),31)])
             ->add('remainders', CollectionType::class, [
                 'entry_type' => RemainderType::class,
                 'allow_add' => true,

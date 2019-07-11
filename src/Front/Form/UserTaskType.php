@@ -12,7 +12,6 @@ class UserTaskType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('isApproved')
             ->add('user')
         ;
     }
