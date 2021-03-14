@@ -1,5 +1,0 @@
-
-<javascript:S14422" Remove this usage of alert(...).(ó—é«
-Zjavascript:UnusedVariable™"5Remove the declaration of the unused 'line' variable.(À“ó4
-Sjavascript:S1854™"7Remove this useless assignment to local variable "line"(À“ó4
-vjavascript:S2703Ï"YAdd the "let", "const" or "var" keyword to this declaration of "bar" to make it explicit.(ÛèÁö
